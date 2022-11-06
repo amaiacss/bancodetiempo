@@ -37,6 +37,16 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+$routes->group('api', function($routes) {
+    $routes->group('user', function($routes) {
+        $routes->get('findall', 'UsersRestController::findAll');
+        $routes->get('find/(:any)', 'UsersRestController::find/$1');
+        $routes->post('create', 'UsersRestController::create');
+        $routes->put('update', 'UsersRestController::update');
+        $routes->delete('delete/(:any)', 'UsersRestController::delete/$1');
+    });
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
