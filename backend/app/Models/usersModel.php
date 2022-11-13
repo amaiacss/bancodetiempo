@@ -12,7 +12,7 @@ class usersModel extends Model
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'object';
-    protected $useSoftDeletes   = true;
+    protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
         'email', 'pass', 'verificado', 'name', 'firstName', 'phone', 'about_me'
@@ -26,8 +26,25 @@ class usersModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
+    protected $validationRules      = [
+        'email' => 'required|valid_email|unique',
+        'pass'  => 'required|regex_match[^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$]',
+        'name'  => 'required|regex_match[^[a-zA-Z ]{2,254}]'
+    ];
+    protected $validationMessages   = [
+        'email' => [
+            'required'    => 'El email es obligatorio.',
+            'valid_email' => 'Introduce un email con un formato válido.' 
+        ],
+        'pass' => [
+            'required'  => 'Indica una contraseña.',
+            'regex_match' => 'La contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula y un número.'
+        ],
+        'name' => [
+            'required' => 'El nombre es obligatorio.',
+            'regex_match' => 'El formato del nombre no es correcto.'
+        ]
+    ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 

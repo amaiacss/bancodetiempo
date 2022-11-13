@@ -18,11 +18,16 @@ class UsersRestController extends BaseController
         return $this->response->setStatusCode(200)->setJSON($model->find($id));
     }
 
+    // Registro de nuevo Usuario
+    // Recibimos el nombre, email, y contraseña
     public function create()
     {
         $user = $this->request->getJSON();
+        // comprobamos los datos recibidos a través del model
         $model = new usersModel();
-        $model->insert($user);
+        if(!$model->insert($user)) {
+            return $this->fail($model->errors());
+        }
         return $this->response->setStatusCode(200);
     }
 
