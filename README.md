@@ -7,4 +7,4 @@
 
     guarda la contraseña encriptada con md5
 
-    librería phpmailer para enviar un email para verificar el correo de nuevo usuario
+    librería phpmailer para enviar un email y así verificar el correo de nuevo usuario
