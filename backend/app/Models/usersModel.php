@@ -27,14 +27,15 @@ class usersModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'email' => 'required|valid_email|unique',
+        'email' => 'required|valid_email|is_unique[users.email]',
         'pass'  => 'required|regex_match[^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$]',
         'name'  => 'required|regex_match[^[a-zA-Z ]{2,254}]'
     ];
     protected $validationMessages   = [
         'email' => [
             'required'    => 'El email es obligatorio.',
-            'valid_email' => 'Introduce un email con un formato válido.' 
+            'valid_email' => 'Introduce un email con un formato válido.',
+            'is_unique'      => 'Este email ya está registrado.'
         ],
         'pass' => [
             'required'  => 'Indica una contraseña.',
