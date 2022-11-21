@@ -44,6 +44,7 @@ $routes->group('api', function($routes) {
         $routes->post('create', 'UsersRestController::create');
         $routes->put('update', 'UsersRestController::update');
         $routes->delete('delete/(:any)', 'UsersRestController::delete/$1');
+        $routes->post('login', 'UsersRestController::login');
     });
 });
 

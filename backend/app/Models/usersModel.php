@@ -28,8 +28,9 @@ class usersModel extends Model
     // Validation
     protected $validationRules      = [
         'email' => 'required|valid_email|is_unique[users.email]',
-        'pass'  => 'required|regex_match[^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$]',
-        'name'  => 'required|regex_match[^[a-zA-Z ]{2,254}]'
+        'pass'  => 'required',
+        //|regex_match[^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$]',
+        //'name'  => 'required|regex_match[^[a-zA-Z ]{2,254}]'
     ];
     protected $validationMessages   = [
         'email' => [
@@ -39,12 +40,12 @@ class usersModel extends Model
         ],
         'pass' => [
             'required'  => 'Indica una contraseña.',
-            'regex_match' => 'La contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula y un número.'
+           // 'regex_match' => 'La contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula y un número.'
         ],
-        'name' => [
+        /*'name' => [
             'required' => 'El nombre es obligatorio.',
             'regex_match' => 'El formato del nombre no es correcto.'
-        ]
+        ]*/
     ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
