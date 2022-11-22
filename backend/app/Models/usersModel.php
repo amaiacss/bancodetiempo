@@ -15,7 +15,7 @@ class usersModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'email', 'pass', 'verificado', 'name', 'firstName', 'phone', 'about_me'
+        'email','username', 'pass', 'verificado', 'name', 'firstName', 'phone', 'about_me'
     ];
 
     // Dates
