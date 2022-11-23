@@ -42,17 +42,21 @@ class UsersRestController extends BaseController
         $model = new usersModel();
         // Consultamos email
         $res = $model->where('email', $login->email)->findAll();
-        // si devuelve más de uno, error
+        // si no devuelve uno, error
         if(count($res)!=1) {
-            return $result;
+            return $this->setResponseFormat('json')->respond($result);
         }
         $row = $res[0];
-        //print_r(($row));exit();
         if( md5($login->pass) == $row->pass ) {
             $result = [
                 "id" => $row->id,
                 "pass" => true,
-                "username" => $row->firstName
+                "username" => $row->username
+            ];
+        } else {
+            $result = [
+                "id" => $row->id,
+                "pass" => false,
             ];
         }
         return $this->setResponseFormat('json')->respond($result);
