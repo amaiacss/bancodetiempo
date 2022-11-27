@@ -10,45 +10,54 @@ class Users extends Migration
     {
         $this->forge->addField([
             'id' => array(
-                'type' => 'INT',
-                'constraint' => 11,
+                'type'           => 'INT',
+                'constraint'     => 11,
                 'auto_increment' => TRUE
             ),
             'email' => array(
-                'type' => 'VARCHAR',
+                'type'       => 'VARCHAR',
                 'constraint' => 255
 			),
             'username' => array(
-                'type' => 'VARCHAR',
+                'type'       => 'VARCHAR',
                 'constraint' => 20,
-                'null' => true
+                'null'       => true
 			),
             'pass' => array(
-                'type' => 'VARCHAR',
+                'type'       => 'VARCHAR',
                 'constraint' => 255
 			),
 			'verificado' => array(
-                'type' => 'TINYINT',
+                'type'    => 'TINYINT',
                 'default' => 0
 			),
             'name' => array(
-                'type' => 'VARCHAR',
+                'type'       => 'VARCHAR',
                 'constraint' => 255,
-                'null' => true
+                'null'       => true
             ),
             'firstName' => array(
-                'type' => 'VARCHAR',
+                'type'       => 'VARCHAR',
                 'constraint' => 255,
-                'null' => true
+                'null'       => true
             ),
             'phone' => array(
-                'type' => 'INT',
+                'type'       => 'INT',
                 'constraint' => 10,
-                'null' => true
+                'null'       => true
             ),
             'about_me' => array(
                 'type' => 'TEXT',
                 'null' => true
+            ),
+            'activacion_codigo' => array(
+                'type'       => 'VARCHAR',
+				'constraint' => '255'
+            ),
+            'recuperacion_codigo' => array(
+				'type'       => 'VARCHAR',
+				'constraint' => '255',
+                'null'       => true
             ),
 			'created_at' => [ 'type' => 'DATETIME' ],
 			'updated_at' => [ 'type' => 'DATETIME' ],
