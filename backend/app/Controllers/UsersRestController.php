@@ -5,19 +5,7 @@ namespace App\Controllers;
 use App\Models\usersModel;
 
 class UsersRestController extends BaseController
-{
-    public function findAll()
-    {
-        $model = new usersModel();
-        return $this->response->setStatusCode(200)->setJSON($model->findAll());
-    }
-
-    public function find($id)
-    {
-        $model = new usersModel();
-        return $this->response->setStatusCode(200)->setJSON($model->find($id));
-    }
-
+{    
     // Registro de nuevo Usuario
     // Recibimos el email, y contraseña
     // encripta la contraseña
@@ -28,13 +16,20 @@ class UsersRestController extends BaseController
         // comprobamos los datos recibidos a través del model
         $model = new usersModel();
         $user->pass = md5($this->requestdata->pass);
+        $user->activacion_codigo = date("YmdHis").rand(10000,99999);
         
         if(!$model->insert($user)) {
-            return $this->fail($model->errors());
+            return $this->response->setStatusCode(400);
+           // return $this->fail($model->errors());
         }
+        $id_usuario = $model->insertID;
+
+        $correo = new \App\Libraries\Correo();
+        $correo->Registro( $id_usuario );
+
         return $this->response->setStatusCode(200);
     }
-
+    
     public function login() 
     {
         $login = $this->requestdata;   
@@ -61,7 +56,7 @@ class UsersRestController extends BaseController
         }
         return $this->setResponseFormat('json')->respond($result);
     }
-
+    
     public function update()
     {
         $user = $this->request->getJSON();
@@ -69,12 +64,23 @@ class UsersRestController extends BaseController
         $model->update($user->id, $user);
         return $this->response->setStatusCode(200);
     }
-
+    
     public function delete($id)
     {
         $user = $this->request->getJSON();
         $model = new usersModel();
         $model->delete($id);
         return $this->response->setStatusCode(200);
+    }
+    public function findAll()
+    {
+        $model = new usersModel();
+        return $this->response->setStatusCode(200)->setJSON($model->findAll());
+    }
+    
+    public function find($id)
+    {
+        $model = new usersModel();
+        return $this->response->setStatusCode(200)->setJSON($model->find($id));
     }
 }
