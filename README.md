@@ -9,8 +9,8 @@
 
     librería phpmailer para enviar un email y así verificar el correo de nuevo usuario
 
-    TODO: Enviar email con la url que verifica el email
-    TODO: URL lógica para que funcione
+    Enviar email con la url que verifica el email
+    TODO: URL verificar email ,lógica para que funcione
 
 ## LOGIN
     Comprueba si existe el email, si existe comprueba que la contraseña sea correcta
