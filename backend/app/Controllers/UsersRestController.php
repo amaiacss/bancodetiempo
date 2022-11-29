@@ -56,6 +56,23 @@ class UsersRestController extends BaseController
         }
         return $this->setResponseFormat('json')->respond($result);
     }
+
+    public function Activar($cod)
+    {
+        $model = new \App\Models\usersModel();
+        $model->where('activacion_codigo', $cod);
+        $model->where('activo', 0);
+        $res = $model->findAll();
+        print_r($res);exit();
+        if($res) return false;
+        //if(!isset($res->id)) return false;
+        $result = $model->ActivarCuenta($cod);
+        if($result) {
+            return redirect()->route('candidatos-perfil');
+        }else{
+            return redirect()->route('candidatos-registro');
+        }
+    }
     
     public function update()
     {
