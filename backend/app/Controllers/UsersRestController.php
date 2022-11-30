@@ -59,19 +59,24 @@ class UsersRestController extends BaseController
 
     public function Activar($cod)
     {
+        $urlerror = "http://localhost:4200/login?verificado=error";
         $model = new \App\Models\usersModel();
         $model->where('activacion_codigo', $cod);
-        $model->where('activo', 0);
+        $model->where('verificado', 0);
         $res = $model->findAll();
-        print_r($res);exit();
-        if($res) return false;
-        //if(!isset($res->id)) return false;
-        $result = $model->ActivarCuenta($cod);
-        if($result) {
-            return redirect()->route('candidatos-perfil');
-        }else{
-            return redirect()->route('candidatos-registro');
+        
+        if(count($res) == 0) { header("Location: $urlerror"); exit(); }
+        if(!isset($res[0]->id)) { header("Location: $urlerror"); exit(); }
+
+        $id = $res[0]->id;
+
+        $updatedata = ['verificado' => 1];
+        if($model->update($id, $updatedata)) {
+            header("Location: http://localhost:4200/login?verificado=ok");
+        } else {
+            header("Location: $urlerror");
         }
+        exit();
     }
     
     public function update()
