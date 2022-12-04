@@ -19,7 +19,7 @@
                 <table width="600" bgcolor="ffffff" style="width:600px; background-color: #ffffff;padding:2rem 1rem;" cellpadding="20" cellspacing="20">
                     <tr>
                         <td align="center" valign="top">
-                            <a href=""><img src="#" alt="logo RTS"></a>
+                            <a href=""><img src="#" alt="logo"></a>
                         </td>
                     </tr>
                     <tr>
