@@ -7,6 +7,7 @@
                             }
     Respuesta: Si hace registro devuelve StatusCode 200
                Si no hace el registro devuelve StatusCode 400
+
 ## ACTIVACIÓN DE CUENTA
     http://localhost:8080/activacion/(:num)
     Tipo : GET
@@ -21,6 +22,7 @@
 
         http://localhost:4200/login?verificado=ok --> Usuario verificado
                                                   --> En el alert, mensaje tipo, 'Usuario verificado correctamente'
+
 ## LOGIN
     http://localhost:8080/api/user/login
     Tipo: post
@@ -43,7 +45,7 @@
                     {
                         "id": null
                     }
-                Si no ha verificado su emial
+                Si no ha verificado su email
                     {
                         "verificado": 0
                     }

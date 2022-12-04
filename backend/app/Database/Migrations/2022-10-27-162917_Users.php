@@ -46,6 +46,16 @@ class Users extends Migration
                 'constraint' => 10,
                 'null'       => true
             ),
+            'provincia' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 4,
+                'null' => true
+			),
+            'poblacion' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 10,
+                'null' => true
+			),
             'about_me' => array(
                 'type' => 'TEXT',
                 'null' => true
