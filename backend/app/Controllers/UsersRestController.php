@@ -42,11 +42,16 @@ class UsersRestController extends BaseController
             return $this->setResponseFormat('json')->respond($result);
         }
         $row = $res[0];
+        if($row->verificado == 0) {
+            $result = ["verificado" => $row->verificado];
+            return $this->setResponseFormat('json')->respond($result);
+        }
+        
         if( md5($login->pass) == $row->pass ) {
             $result = [
                 "id" => $row->id,
                 "pass" => true,
-                "username" => $row->username
+                "verificado" => $row->verificado
             ];
         } else {
             $result = [

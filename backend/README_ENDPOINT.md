@@ -30,6 +30,10 @@
                     {
                         "id": null
                     }
+                Si no ha verificado su emial
+                    {
+                        "verificado": 0
+                    }
 
 ## ACTUALIZAR DATOS DE USUARIO         
     http://localhost:8080/api/user/update
