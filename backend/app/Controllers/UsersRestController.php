@@ -67,12 +67,13 @@ class UsersRestController extends BaseController
         $urlerror = "http://localhost:4200/login?verificado=error";
         $model = new \App\Models\usersModel();
         $model->where('activacion_codigo', $cod);
-        $model->where('verificado', 0);
+        //$model->where('verificado', 0);
         $res = $model->findAll();
         
         if(count($res) == 0) { header("Location: $urlerror"); exit(); }
         if(!isset($res[0]->id)) { header("Location: $urlerror"); exit(); }
-
+        if($res[0]->verificado == 1) { header("Location: http://localhost:4200/login?verificado=error44"); exit(); }
+        
         $id = $res[0]->id;
 
         $updatedata = ['verificado' => 1];

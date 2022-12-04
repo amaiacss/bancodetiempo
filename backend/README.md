@@ -13,6 +13,10 @@
     TODO: URL verificar email ,lógica para que funcione
 
 ## LOGIN
-    Comprueba si existe el email, si existe comprueba que la contraseña sea correcta
+    Comprueba si existe el email, si existe comprueba que la contraseña sea correcta y comprueba si su email lo ha verificado através del enlace de su correo.
+
+
+    
+
 
 
