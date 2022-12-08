@@ -20,14 +20,14 @@ class UsersRestController extends BaseController
         
         if(!$model->insert($user)) {
             return $this->response->setStatusCode(400);
-           // return $this->fail($model->errors());
         }
         $id_usuario = $model->insertID;
 
         $correo = new \App\Libraries\Correo();
         $correo->Registro( $id_usuario );
 
-        return $this->response->setStatusCode(200);
+        $this->SetResult('ok', true);
+        return $this->PrintResult();
     }
     
     public function login() 
@@ -83,6 +83,32 @@ class UsersRestController extends BaseController
             header("Location: $urlerror");
         }
         exit();
+    }
+
+    public function updatePass() {
+        $model = new usersModel();
+        $error_clave = false;
+
+        if(!isset($this->requestdata->pass1) || !isset($this->requestdata->pass2)) {            
+            $error_clave = true;
+            // falta algún campo
+            $error_clave_mensaje = ['error' => "empty" ];
+        } else {
+            $pass1 = str_replace(" ", "", $this->requestdata->pass1);
+            $pass2 = str_replace(" ", "", $this->requestdata->pass2);
+
+            if($pass1 != $pass2) {
+                $error_clave = true;
+                // no coinciden
+                $error_clave_mensaje = ['error' => "notsame" ];
+            }
+        }
+
+        if($error_clave) {
+            return $this->setResponseFormat('json')->respond($error_clave_mensaje);
+        } else {
+            
+        }
     }
     
     public function update()
