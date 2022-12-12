@@ -10,10 +10,10 @@
     librería phpmailer para enviar un email y así verificar el correo de nuevo usuario
 
     Enviar email con la url que verifica el email. Se genera un codigo único ( activacion_codigo ) que será el que se verifica que corresponda a ese usuario
-    TODO: URL verificar email ,lógica para que funcione
+    URL verificar email
 
 ## LOGIN
-    Comprueba si existe el email, si existe comprueba que la contraseña sea correcta y comprueba si su email lo ha verificado através del enlace de su correo.
+    Comprueba si existe el email, si existe comprueba que la contraseña sea correcta y comprueba si su email lo ha verificado a través del enlace de su correo.
 
 
     
