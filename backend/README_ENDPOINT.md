@@ -3,7 +3,8 @@
     Tipo : post
     Json que recibe la api: {
                                "email": "amaia@correo.com",
-                               "pass": "ASdfgh123"
+                               "pass": "ASdfgh123",
+                               "username": "amaia123"
                             }
     Respuesta: Si hace registro devuelve StatusCode 200
                Si no hace el registro devuelve StatusCode 400
@@ -14,13 +15,13 @@
     Este enlace lo recibe el nuevo usuario en su correo, cuando lo pulse le redirige a la página de login.
     El back se encarga de la lógica de la verificación.
     En la url se recibe un parámetro en función de la respuesta de la API:
-        http://localhost:4200/login?verificado=error --> No se ha encontrado al usuario o algún fallo interno por BD o servidor.    
+        http://localhost:4200/login?verified=error --> No se ha encontrado al usuario o algún fallo interno por BD o servidor.    
                                                      --> En el alert, mensaje tipo inténtalo más tarde o ponte en contacto con nosotros.
 
-        http://localhost:4200/login?verificado=error44 --> El usuario ya está verificado anteriormente.
+        http://localhost:4200/login?verified=error44 --> El usuario ya está verificado anteriormente.
                                                        --> En el alert, mensaje tipo 'Este usuario ya ha sido verificado. Puedes iniciar sesión'.
 
-        http://localhost:4200/login?verificado=ok --> Usuario verificado
+        http://localhost:4200/login?verified=ok --> Usuario verificado
                                                   --> En el alert, mensaje tipo, 'Usuario verificado correctamente'
 
 ## LOGIN
