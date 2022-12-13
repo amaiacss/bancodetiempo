@@ -48,6 +48,21 @@ $routes->group('api', function($routes) {
         $routes->put('update', 'UsersRestController::update');
         $routes->delete('delete/(:any)', 'UsersRestController::delete/$1');
     });
+    $routes->group('province', function($routes) {
+        $routes->post('create', 'ProvincesRestController::create');
+        $routes->get('findall', 'ProvincesRestController::findAll');
+        $routes->get('find/(:any)', 'ProvincesRestController::find/$1');
+        $routes->put('update', 'ProvincesRestController::update');
+        $routes->delete('delete/(:any)', 'ProvincesRestController::delete/$1');
+    });
+    $routes->group('city', function($routes) {
+        $routes->post('create', 'CitiesRestController::create');
+        $routes->get('findall', 'CitiesRestController::findAll');
+        $routes->get('find/(:any)', 'CitiesRestController::find/$1');
+        $routes->get('findByProvince/(:any)', 'CitiesRestController::findByProvince/$1');
+        $routes->put('update', 'CitiesRestController::update');
+        $routes->delete('delete/(:any)', 'CitiesRestController::delete/$1');
+    });
 });
 
 /*
