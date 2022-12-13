@@ -1,5 +1,5 @@
 ## REGISTRO NUEVO USUARIO
-    datos del formulario requeridos: email, contraseña
+    datos del formulario requeridos: email, pass, username
 
     valida que el email no esté registrado, y tenga el formato adecuado
     valida que la contraseña min. 8 caracteres, una mayúscula, una minúscula, y un número
