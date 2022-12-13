@@ -9,12 +9,12 @@ class Correo extends Core {
 
     public function Registro($id_usuario)
     {
-        $model = new \App\Models\usersModel();
+        $model = new \App\Models\UserModel();
         $result = $model->find($id_usuario);
 
         $datos = [];
         $datos['email'] = $result->email;
-        $datos['activacion_codigo'] = $result->activacion_codigo;
+        $datos['activacion_codigo'] = $result->activationCode;
         $datos['activacion_url'] = site_url(route_to('registro-activar', $datos['activacion_codigo']));
         $html = view('emails/confirmar_registro', $datos);
 

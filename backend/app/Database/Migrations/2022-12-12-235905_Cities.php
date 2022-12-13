@@ -30,7 +30,8 @@ class Cities extends Migration
 			'updated_at' => [ 'type' => 'DATETIME' ],
 			'deleted_at' => [ 'type' => 'DATETIME', 'null' => true],	
 		]);
-		$this->forge->addKey('code', TRUE);       
+		$this->forge->addPrimaryKey('code');           
+        $this->forge->addForeignKey('codeProvince','provinces','code');
 		$this->forge->createTable('cities');
 
 		$seeder = \Config\Database::seeder();

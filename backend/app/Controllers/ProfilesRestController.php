@@ -2,10 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Models\UserModel;
-use Config\Services;
+use App\Models\ProfileModel;
 
-class UsersRestController extends BaseController
+class ProfilesRestController extends BaseController
 {    
     // Registro de nuevo Usuario
     // Recibimos el email, y contraseña
@@ -15,9 +14,9 @@ class UsersRestController extends BaseController
     {
         $user = $this->requestdata;
         // comprobamos los datos recibidos a través del model
-        $model = new UserModel();
+        $model = new usersModel();
         $user->pass = md5($this->requestdata->pass);
-        $user->activationCode = date("YmdHis").rand(10000,99999);
+        $user->activacion_codigo = date("YmdHis").rand(10000,99999);
         
         if(!$model->insert($user)) {
             return $this->response->setStatusCode(400);
@@ -35,7 +34,7 @@ class UsersRestController extends BaseController
     {
         $login = $this->requestdata;   
         $result = ["id" => null];
-        $model = new UserModel();
+        $model = new usersModel();
         // Consultamos email
         $res = $model->where('email', $login->email)->findAll();
         // si no devuelve uno, error
@@ -43,8 +42,8 @@ class UsersRestController extends BaseController
             return $this->setResponseFormat('json')->respond($result);
         }
         $row = $res[0];
-        if($row->verified == 0) {
-            $result = ["verified" => $row->verified];
+        if($row->verificado == 0) {
+            $result = ["verificado" => $row->verificado];
             return $this->setResponseFormat('json')->respond($result);
         }
         
@@ -52,7 +51,7 @@ class UsersRestController extends BaseController
             $result = [
                 "id" => $row->id,
                 "pass" => true,
-                "verified" => $row->verified
+                "verificado" => $row->verificado
             ];
         } else {
             $result = [
@@ -63,24 +62,23 @@ class UsersRestController extends BaseController
         return $this->setResponseFormat('json')->respond($result);
     }
 
-    public function activar($cod)
+    public function Activar($cod)
     {
-        $urlerror = Services::getFrontURL() . "/login?verified=error";
-        return $this->respond($urlerror);
-        $model = new \App\Models\UserModel();
-        $model->where('activationCode', $cod);
+        $urlerror = "http://localhost:4200/login?verificado=error";
+        $model = new \App\Models\usersModel();
+        $model->where('activacion_codigo', $cod);
         //$model->where('verificado', 0);
         $res = $model->findAll();
         
         if(count($res) == 0) { header("Location: $urlerror"); exit(); }
         if(!isset($res[0]->id)) { header("Location: $urlerror"); exit(); }
-        if($res[0]->verified == 1) { header("Location: " . Services::getFrontURL() . "/login?verified=error44"); exit(); }
+        if($res[0]->verificado == 1) { header("Location: http://localhost:4200/login?verificado=error44"); exit(); }
         
         $id = $res[0]->id;
 
-        $updatedata = ['verified' => 1];
+        $updatedata = ['verificado' => 1];
         if($model->update($id, $updatedata)) {
-            header("Location: " . Services::getFrontURL() . "/login?verified=ok");
+            header("Location: http://localhost:4200/login?verificado=ok");
         } else {
             header("Location: $urlerror");
         }
@@ -88,7 +86,7 @@ class UsersRestController extends BaseController
     }
 
     public function updatePass() {
-        $model = new UserModel();
+        $model = new usersModel();
         $error_clave = false;
 
         if(!isset($this->requestdata->pass1) || !isset($this->requestdata->pass2)) {            
@@ -116,7 +114,7 @@ class UsersRestController extends BaseController
     public function update()
     {
         $user = $this->request->getJSON();
-        $model = new UserModel();
+        $model = new usersModel();
         $model->update($user->id, $user);
         return $this->response->setStatusCode(200);
     }
@@ -124,19 +122,19 @@ class UsersRestController extends BaseController
     public function delete($id)
     {
         $user = $this->request->getJSON();
-        $model = new UserModel();
+        $model = new usersModel();
         $model->delete($id);
         return $this->response->setStatusCode(200);
     }
     public function findAll()
     {
-        $model = new UserModel();
+        $model = new usersModel();
         return $this->response->setStatusCode(200)->setJSON($model->findAll());
     }
     
     public function find($id)
     {
-        $model = new UserModel();
+        $model = new usersModel();
         return $this->response->setStatusCode(200)->setJSON($model->find($id));
     }
 }

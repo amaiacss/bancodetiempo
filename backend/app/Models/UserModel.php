@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class usersModel extends Model
+class UserModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'users';
@@ -15,7 +15,7 @@ class usersModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'email','username', 'pass', 'verificado', 'name', 'firstName', 'phone', 'about_me', 'activacion_codigo', 'recuperacion_codigo'
+        'email','username', 'pass', 'verified', 'activationCode', 'recuperationCode'
     ];
 
     // Dates
@@ -28,7 +28,8 @@ class usersModel extends Model
     // Validation
     protected $validationRules      = [
         'email' => 'required|valid_email|is_unique[users.email]',
-        'pass'  => 'required',
+        'username' => 'required',
+        'pass'  => 'required'
         //|regex_match[^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$]',
         //'name'  => 'required|regex_match[^[a-zA-Z ]{2,254}]'
     ];
@@ -40,6 +41,10 @@ class usersModel extends Model
         ],
         'pass' => [
             'required'  => 'Indica una contraseña.',
+           // 'regex_match' => 'La contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula y un número.'
+        ],
+        'username' => [
+            'required'  => 'El nombre de usuario es obligatorio',
            // 'regex_match' => 'La contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula y un número.'
         ],
         /*'name' => [

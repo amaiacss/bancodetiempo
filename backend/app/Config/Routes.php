@@ -36,13 +36,12 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('activacion/(:num)', 'UsersRestController::Activar/$1', ['as' => 'registro-activar']);
+$routes->get('activacion/(:num)', 'UsersRestController::activar/$1', ['as' => 'registro-activar']);
 
 $routes->group('api', function($routes) {
     $routes->group('user', function($routes) {
         $routes->post('create', 'UsersRestController::create');
-        $routes->post('login', 'UsersRestController::login');
-        
+        $routes->post('login', 'UsersRestController::login');        
         $routes->get('findall', 'UsersRestController::findAll');
         $routes->get('find/(:any)', 'UsersRestController::find/$1');
         $routes->put('update', 'UsersRestController::update');

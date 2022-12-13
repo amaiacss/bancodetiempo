@@ -4,18 +4,18 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class CityModel extends Model
+class ProfileModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'cities';
-    protected $primaryKey       = 'code';
-    protected $useAutoIncrement = true;
+    protected $table            = 'profiles';
+    protected $primaryKey       = 'id';
+    protected $useAutoIncrement = false;
     protected $insertID         = 0;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'codeProvince', 'codeCity', 'name'
+        'firsName', 'lastName', 'phone', 'aboutMe', 'picture', 'credit', 'locationCode'
     ];
 
     // Dates
@@ -27,20 +27,13 @@ class CityModel extends Model
 
     // Validation
     protected $validationRules      = [
-        /*'code'  => 'required',
-        'name'  => 'required'
-        /*'email' => 'required|valid_email|is_unique[users.email]',
-        'pass'  => 'required',
+       /* 'email' => 'required|valid_email|is_unique[users.email]',
+        'username' => 'required',
+        'pass'  => 'required'*/
         //|regex_match[^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$]',
-        //'name'  => 'required|regex_match[^[a-zA-Z ]{2,254}]'*/
+        //'name'  => 'required|regex_match[^[a-zA-Z ]{2,254}]'
     ];
     protected $validationMessages   = [
-        /*'code' => [
-            'required'    => 'El código es obligatorio.'
-        ],
-        'name' => [
-            'required'    => 'El nombre es obligatorio.'
-        ],
        /* 'email' => [
             'required'    => 'El email es obligatorio.',
             'valid_email' => 'Introduce un email con un formato válido.',
@@ -48,6 +41,10 @@ class CityModel extends Model
         ],
         'pass' => [
             'required'  => 'Indica una contraseña.',
+           // 'regex_match' => 'La contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula y un número.'
+        ],
+        'username' => [
+            'required'  => 'El nombre de usuario es obligatorio',
            // 'regex_match' => 'La contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula y un número.'
         ],
         /*'name' => [
@@ -68,17 +65,4 @@ class CityModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    public function findByProvince(string $id)
-    {
-       
-        $cities = $this      
-        ->where(['codeProvince' => $id])
-        ->findAll();
-
-        if (!$cities) 
-            throw new Exception('No existen municipios para esa provincia');
-
-        return $cities;
-    }
 }

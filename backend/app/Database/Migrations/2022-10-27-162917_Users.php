@@ -26,40 +26,16 @@ class Users extends Migration
             'pass' => array(
                 'type'       => 'VARCHAR',
                 'constraint' => 255
-			),			
-            'name' => array(
-                'type'       => 'VARCHAR',
-                'constraint' => 255,
-                'null'       => true
-            ),
-            'firstName' => array(
-                'type'       => 'VARCHAR',
-                'constraint' => 255,
-                'null'       => true
-            ),
-            'phone' => array(
-                'type'       => 'INT',
-                'constraint' => 10,
-                'null'       => true
-            ),
-            'locationCode' => array(
-                'type'       => 'INT',
-                'constraint' => 11,
-                'null'       => true
-            ),          
-            'about_me' => array(
-                'type' => 'TEXT',
-                'null' => true
-            ),
+			),           
             'verified' => array(
                 'type'    => 'TINYINT',
                 'default' => 0
 			),
-            'activation_code' => array(
+            'activationCode' => array(
                 'type'       => 'VARCHAR',
 				'constraint' => '255'
             ),
-            'recuperation_code' => array(
+            'recuperationCode' => array(
 				'type'       => 'VARCHAR',
 				'constraint' => '255',
                 'null'       => true
