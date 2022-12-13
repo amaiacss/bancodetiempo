@@ -65,8 +65,7 @@ class UsersRestController extends BaseController
 
     public function activar($cod)
     {
-        $urlerror = Services::getFrontURL() . "/login?verified=error";
-        return $this->respond($urlerror);
+        $urlerror = Services::getFrontURL() . "/login?verified=error";        
         $model = new \App\Models\UserModel();
         $model->where('activationCode', $cod);
         //$model->where('verificado', 0);
