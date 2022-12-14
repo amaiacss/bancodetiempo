@@ -27,7 +27,10 @@ class Categories extends Migration
 			'deleted_at' => [ 'type' => 'DATETIME', 'null' => true],	
 		]);
 		$this->forge->addKey('id', TRUE);
-		$this->forge->createTable('categories');		
+		$this->forge->createTable('categories');
+        
+        $seeder = \Config\Database::seeder();
+		$seeder->call('CategoriesSeeder');
     }
 
     public function down()
