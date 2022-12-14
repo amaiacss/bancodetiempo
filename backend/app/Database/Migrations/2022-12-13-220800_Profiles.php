@@ -54,6 +54,7 @@ class Profiles extends Migration
         ]);
 
         $this->forge->addKey('id', true);
+        $this->forge->addForeignKey('id', 'users',  'id');
         $this->forge->addForeignKey('locationCode', 'cities', 'code');
         $this->forge->createTable('profiles');
 
