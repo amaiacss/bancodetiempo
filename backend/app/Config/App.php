@@ -24,7 +24,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'https://www.bancodetiempo.es';
+    public $baseURL = 'https://bancodetiempo.alwaysdata.net/';
 
     /**
      * --------------------------------------------------------------------------

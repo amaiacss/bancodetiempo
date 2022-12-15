@@ -13,6 +13,7 @@ class Correo extends Core {
         $result = $model->find($id_usuario);
 
         $datos = [];
+        $datos['username'] = $result->username;
         $datos['email'] = $result->email;
         $datos['activacion_codigo'] = $result->activationCode;
         $datos['activacion_url'] = site_url(route_to('registro-activar', $datos['activacion_codigo']));
