@@ -22,8 +22,8 @@ class Requests extends Migration
                 'constraint' => 2,
                 'default' => 0              
 			),
-            'state' => array(
-                'type'       => 'CHAR',
+            'idState' => array(
+                'type'       => 'VARCHAR',
                 'constraint' => 1
 			),           
             'idActivity' => array(
@@ -43,6 +43,7 @@ class Requests extends Migration
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('idActivity', 'activities', 'id');
         $this->forge->addForeignKey('idUser', 'users', 'id');
+        $this->forge->addForeignKey('idState', 'requeststates', 'id');
         $this->forge->createTable('requests');
 
     }

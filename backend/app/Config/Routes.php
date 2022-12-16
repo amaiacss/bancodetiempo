@@ -67,6 +67,11 @@ $routes->group('api', function($routes) {
         $routes->get('findall', 'CategoriesRestController::findAll');
         $routes->get('find/(:any)', 'CategoriesRestController::find/$1');       
     });
+    $routes->group('profile', function($routes) {      
+        $routes->post('create', 'ProfilesRestController::create'); 
+        $routes->get('findall', 'ProfilesRestController::findAll');
+        $routes->get('find/(:any)', 'ProfilesRestController::find/$1');       
+    });
 });
 
 /*

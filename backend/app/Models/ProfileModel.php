@@ -15,7 +15,7 @@ class ProfileModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'firsName', 'lastName', 'phone', 'aboutMe', 'picture', 'credit', 'locationCode'
+        'id','firstName', 'lastName', 'phone', 'aboutMe', 'picture', 'credit', 'locationCode'
     ];
 
     // Dates

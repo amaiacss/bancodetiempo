@@ -53,10 +53,13 @@ class Profiles extends Migration
 			'deleted_at' => [ 'type' => 'DATETIME', 'null' => true],
         ]);
 
-        $this->forge->addKey('id', true);
+        $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('id', 'users',  'id');
         $this->forge->addForeignKey('locationCode', 'cities', 'code');
         $this->forge->createTable('profiles');
+
+        $seeder = \Config\Database::seeder();
+		$seeder->call('ProfilesSeeder');
 
     }
 
