@@ -34,7 +34,7 @@ class Services extends BaseService
         return getenv('front.url');
     } 
 
-    public static function getCategoryImageURL(){
-        return getenv('images.url.category');
+    public static function getCategoryImagePath(){
+        return getenv('images.category.path');
     } 
 }

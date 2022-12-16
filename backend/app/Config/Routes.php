@@ -62,7 +62,8 @@ $routes->group('api', function($routes) {
         $routes->put('update', 'CitiesRestController::update');
         $routes->delete('delete/(:any)', 'CitiesRestController::delete/$1');
     });
-    $routes->group('category', function($routes) {       
+    $routes->group('category', function($routes) {      
+        $routes->post('create', 'CategoriesRestController::create'); 
         $routes->get('findall', 'CategoriesRestController::findAll');
         $routes->get('find/(:any)', 'CategoriesRestController::find/$1');       
     });
