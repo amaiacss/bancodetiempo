@@ -23,7 +23,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td align="center" style="font-family:Arial, Helvetica, sans-serif;">
+                        <td style="font-family:Arial, Helvetica, sans-serif;">
                             <?php echo $this->renderSection('main') ?>
                         </td>
                     </tr>

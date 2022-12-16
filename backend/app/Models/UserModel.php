@@ -28,29 +28,21 @@ class UserModel extends Model
     // Validation
     protected $validationRules      = [
         'email' => 'required|valid_email|is_unique[users.email]',
-        'username' => 'required',
+       // 'username' => 'required',
         'pass'  => 'required'
-        //|regex_match[^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$]',
-        //'name'  => 'required|regex_match[^[a-zA-Z ]{2,254}]'
     ];
     protected $validationMessages   = [
         'email' => [
             'required'    => 'El email es obligatorio.',
             'valid_email' => 'Introduce un email con un formato válido.',
-            'is_unique'      => 'Este email ya está registrado.'
+            'is_unique'   => 'Este email ya está registrado.'
         ],
         'pass' => [
-            'required'  => 'Indica una contraseña.',
-           // 'regex_match' => 'La contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula y un número.'
+            'required'  => 'Indica una contraseña.'
         ],
-        'username' => [
-            'required'  => 'El nombre de usuario es obligatorio',
-           // 'regex_match' => 'La contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula y un número.'
-        ],
-        /*'name' => [
-            'required' => 'El nombre es obligatorio.',
-            'regex_match' => 'El formato del nombre no es correcto.'
-        ]*/
+        // 'username' => [
+        //     'required'  => 'El nombre de usuario es obligatorio'
+        // ]
     ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

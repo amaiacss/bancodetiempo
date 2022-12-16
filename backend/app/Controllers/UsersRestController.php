@@ -21,14 +21,15 @@ class UsersRestController extends BaseController
         
         if(!$model->insert($user)) {
             return $this->response->setStatusCode(400);
+        } else {
+            $id_usuario = $model->insertID;
+    
+            $correo = new \App\Libraries\Correo();
+            $correo->Registro( $id_usuario );
+    
+            $this->SetResult('ok', true);
+            return $this->PrintResult();
         }
-        $id_usuario = $model->insertID;
-
-        $correo = new \App\Libraries\Correo();
-        $correo->Registro( $id_usuario );
-
-        $this->SetResult('ok', true);
-        return $this->PrintResult();
     }
     
     public function login() 
