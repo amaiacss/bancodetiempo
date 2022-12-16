@@ -20,6 +20,14 @@ class UsersRestController extends BaseController
         $user->activationCode = date("YmdHis").rand(10000,99999);
         
         if(!$model->insert($user)) {
+            // En el caso de que se quiera gestionar los errores del formulario create
+            // $error = $model->errors();
+            // if( isset($error) && count($error) > 0 ) {
+            //     foreach($error as $err => $valor) {
+            //         $this->SetResult($err, $valor);
+            //     }
+            // }
+            // $this->PrintResult();
             return $this->response->setStatusCode(400);
         } else {
             $id_usuario = $model->insertID;

@@ -5,7 +5,7 @@ echo $this->extend($config->viewLayoutEmail);
 
 <?php echo $this->section('main') ?>
 
-<p>Hola <?php echo $username?>:</p>
+<p>Hola <?php echo $username; ?>:</p>
 
 <strong>Confirmar registro banco de tiempo</strong>
 <p>Accede desde este enlace para confirmar tu email y así tener acceso a tu área privada</p>

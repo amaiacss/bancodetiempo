@@ -28,7 +28,7 @@ class UserModel extends Model
     // Validation
     protected $validationRules      = [
         'email' => 'required|valid_email|is_unique[users.email]',
-       // 'username' => 'required',
+        'username' => 'required',
         'pass'  => 'required'
     ];
     protected $validationMessages   = [
@@ -40,9 +40,10 @@ class UserModel extends Model
         'pass' => [
             'required'  => 'Indica una contraseña.'
         ],
-        // 'username' => [
-        //     'required'  => 'El nombre de usuario es obligatorio'
-        // ]
+        'username' => [
+            'required'  => 'El nombre de usuario es obligatorio',
+           // 'is_unique'   => 'Este username ya está registrado.'
+        ]
     ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

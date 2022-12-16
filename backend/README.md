@@ -14,6 +14,22 @@
 
 ## LOGIN
     Comprueba si existe el email, si existe comprueba que la contraseña sea correcta y comprueba si su email lo ha verificado a través del enlace de su correo.
+    
+## DESPLIEGUE
+    La aplicación está desplegada en https://www.alwaysdata.com/en/ 
+    Usuario: anruiz@birt.eus
+    Password: Birt2022*
+    Para acceder por FTP: ftp-bancodetiempo.alwaysdata.net (usuario: bancodetiempo pass: Birt2022*)
+    Para acceder por SSH: ssh-bancodetiempo.alwaysdata.net  (usuario: bancodetiempo pass: Birt2022*)
+    Para acceder a la BD: mysql-bancodetiempo.alwaysdata.net (nombre: bancodetiempo_db usuario: 292984_birt pass: Bancodetiempo2022)
+
+
+## BUZÓN EMAIL 
+    https://webmail.alwaysdata.com/
+        Usuario:  bancodetiempo@alwaysdata.net
+        Password: Birt2022*
+
+   
 
 
     
