@@ -27,7 +27,7 @@ class UsersRestController extends BaseController
             //         $this->SetResult($err, $valor);
             //     }
             // }
-            // $this->PrintResult();
+            $this->PrintResult();
             return $this->response->setStatusCode(400);
         } else {
             $id_usuario = $model->insertID;
