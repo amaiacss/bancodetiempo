@@ -40,6 +40,7 @@ abstract class BaseController extends Controller
     protected $helpers = [];
     protected $data = [ 'ok' => false ];
     protected $requestdata;
+    protected $db;
 
     /**
      * Constructor.
@@ -49,6 +50,7 @@ abstract class BaseController extends Controller
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
         $this->requestdata = $this->request->getJSON();
+        $this->db = \Config\Database::connect();
 
         // Preload any models, libraries, etc, here.
 

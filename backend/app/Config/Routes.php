@@ -67,6 +67,12 @@ $routes->group('api', function($routes) {
         $routes->get('findall', 'CategoriesRestController::findAll');
         $routes->get('find/(:any)', 'CategoriesRestController::find/$1');       
     });
+    $routes->group('activity', function($routes) {      
+        $routes->post('create', 'ActivitiesRestController::create'); 
+        $routes->get('findall', 'ActivitiesRestController::getActivities');
+        $routes->get('find/(:any)', 'ActivitiesRestController::find/$1', ['as' => 'card-activity']);       
+    });
+
 });
 
 /*
