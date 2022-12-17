@@ -22,10 +22,10 @@ class Activities extends Migration
                 'type'       => 'TEXT',
                 'constraint' => 20                
 			),
-            'picture' => array(
+           /* 'picture' => array(
                 'type'       => 'VARCHAR',
                 'constraint' => 255
-			),           
+			),     */      
             'date' => array(
                 'type'    => 'DATETIME',                
 			),
