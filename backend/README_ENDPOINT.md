@@ -51,6 +51,48 @@
                         "verificado": 0
                     }
 
+## REGISTRO ACTIVIDADES
+    localhost:8080/api/activity/create
+    Tipo: post
+    Lo que recibe la api :
+        {
+            "title": "Prueba titulo",
+            "description" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            "idCategory": 1,
+            "idUser": 11
+        }
+
+    Respuesta: 
+        Si lo ha insertado en la BD: 
+            {
+                "ok": true
+            }
+        Si no lo ha insertado en la BD:
+            {
+                "ok": false
+            }
+
+## RECUPERAR ACTIVIDADES CON BUSQUEDA
+    localhost:8080/api/activity/findall
+    Tipo: get
+    Lo que puede recibir la api para la busqueda con filtros:
+        {
+            "category" : 1,
+            "province": "01",
+            "city": "051",
+            "search": "texto"
+        }
+
+## ACTIVIDAD
+    localhost:8080/api/activity/find/1
+    Tipo: get
+    Devuelve los datos de una actividad
+
+## LISTADO DE CATEGORIAS PARA EL DESPLEGABLE DEL BUSCADOR
+    localhost:8080/api/category/getList
+    Tipo: get
+
+
 ## ACTUALIZAR DATOS DE USUARIO         
     http://localhost:8080/api/user/update
     Tipo: put

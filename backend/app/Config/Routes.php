@@ -66,8 +66,9 @@ $routes->group('api', function($routes) {
         $routes->post('create', 'CategoriesRestController::create'); 
         $routes->get('findall', 'CategoriesRestController::findAll');
         $routes->get('find/(:any)', 'CategoriesRestController::find/$1');       
+        $routes->get('getList', 'CategoriesRestController::getListCategories');       
     });
-    
+
     $routes->group('activity', function($routes) {      
         $routes->post('create', 'ActivitiesRestController::create'); 
         $routes->get('findall', 'ActivitiesRestController::getActivities');
@@ -76,7 +77,7 @@ $routes->group('api', function($routes) {
 
     $routes->group('profile', function($routes) {      
         $routes->post('create', 'ProfilesRestController::create'); 
-        $routes->get('findall', 'ProfilesRestController::findAll');
+        $routes->get('findall/(:any)', 'ProfilesRestController::findAll');
         $routes->get('find/(:any)', 'ProfilesRestController::find/$1');       
     });
 });
