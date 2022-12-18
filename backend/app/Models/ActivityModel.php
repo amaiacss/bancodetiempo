@@ -27,12 +27,14 @@ class ActivityModel extends Model
 
     // Validation
     protected $validationRules      = [    
-        'title'       => 'required',
-        'description' => 'required'
+        'title'       => 'required|min_length[5]',
+        'description' => 'required|min_length[25]',
+        'idCategory'  => 'required'
     ];
     protected $validationMessages   = [
-        'title'       => [ 'required'  => 'Título obligatorio.' ],
-        'description' => [ 'required'  => 'Descripción obligatoria.' ]
+        'title'       => [ 'required'  => 'Título obligatorio.', 'min_length' => 'Título 5 caracteres mínimo.' ],
+        'description' => [ 'required'  => 'Descripción obligatoria.', 'min_length' => 'Descripción 25 caracteres mínimo.' ],
+        'idCategory'  => [ 'required'  => 'Categoría obligatoria.' ]
     ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

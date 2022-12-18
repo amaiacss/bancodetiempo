@@ -42,10 +42,10 @@ class ActivitiesRestController extends BaseController
 
     public function create()
     {
-        $category = $this->requestdata;        
+        $activity = $this->requestdata;        
         $model = new ActivityModel(); 
         
-        if(!$model->insert($category)) {
+        if(!$model->insert($activity)) {
             $this->PrintResult();
             return $this->response->setStatusCode(400);
         } else {
