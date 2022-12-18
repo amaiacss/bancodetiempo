@@ -19,7 +19,7 @@
                 <table width="600" bgcolor="ffffff" style="width:600px; background-color: #ffffff;padding:2rem 1rem;" cellpadding="20" cellspacing="20">
                     <tr>
                         <td align="center" valign="top">
-                            <a href=""><img src="#" alt="logo"></a>
+                            <a href="https://bt-app-eus.web.app"><img src="https://bt-app-eus.web.app/assets/img/navbar-logo-bdt.svg" alt="logo"></a>
                         </td>
                     </tr>
                     <tr>
