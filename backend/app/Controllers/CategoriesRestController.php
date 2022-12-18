@@ -42,4 +42,13 @@ class CategoriesRestController extends BaseController
         //$category->id = $model->db->insert_id();
         return $this->setResponseFormat('json')->respond($category);
     }
+
+    public function getListCategories() {
+        $model = new CategoryModel();
+        $categories = $model->select('id, name')->findall();
+        
+        if(count($categories) > 0) $this->SetResult('ok', true);
+        $this->SetResult('categories', $categories);
+        return $this->PrintResult();
+    }
 }
