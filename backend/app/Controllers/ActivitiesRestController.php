@@ -11,7 +11,6 @@ class ActivitiesRestController extends BaseController
     public function getActivities()
     {       
         $model = new ActivityModel();
-      //  $model->select('activities.*, categories.name, categories.picture, cities.name AS city, provinces.name AS province');
         $model->select('activities.id, activities.title, activities.idUser, activities.created_at AS dateActivity, categories.name AS category, categories.picture, profiles.firstName, cities.name AS city, provinces.name AS province');
         $model->where('activities.deleted_at', NULL);
         $model->join('categories', 'activities.idCategory = categories.id');
@@ -23,6 +22,7 @@ class ActivitiesRestController extends BaseController
         if(isset($this->requestdata->province)) $model->where('provinces.code', $this->requestdata->province);
         if(isset($this->requestdata->city)) $model->where('cities.codeCity', $this->requestdata->city);
         if(isset($this->requestdata->search)) $model->like('activities.description', $this->requestdata->search);
+        if(isset($this->requestdata->idUser)) $model->where('profiles.id', $this->requestdata->idUser);
         
         $data = $model->findAll();
         foreach($data as $key => $val) {      
