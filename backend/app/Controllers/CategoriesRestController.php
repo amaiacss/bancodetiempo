@@ -9,13 +9,13 @@ class CategoriesRestController extends BaseController
 {       
     public function findAll()
     {
-        $model = new CategoryModel();
-        $data = $model->findAll();
-        $longitud = count($data);
+        $model = new CategoryModel();     
+        $categories = $model->select('id, name_es, name_eu')->findall();
+       /* $longitud = count($categories);
         for($i=0; $i<$longitud; $i++) {
             $data[$i]->picture = site_url(Services::getCategoryImagePath() . $data[$i]->picture);
-        }
-        return $this->response->setStatusCode(200)->setJSON($data);
+        }*/
+        return $this->response->setStatusCode(200)->setJSON($categories);
     }
     
     public function find($id)
@@ -43,12 +43,12 @@ class CategoriesRestController extends BaseController
         return $this->setResponseFormat('json')->respond($category);
     }
 
-    public function getListCategories() {
+   /* public function getListCategories() {
         $model = new CategoryModel();
         $categories = $model->select('id, name')->findall();
         
         if(count($categories) > 0) $this->SetResult('ok', true);
         $this->SetResult('categories', $categories);
         return $this->PrintResult();
-    }
+    }*/
 }

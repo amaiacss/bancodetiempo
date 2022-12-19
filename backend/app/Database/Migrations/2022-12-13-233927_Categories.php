@@ -14,7 +14,11 @@ class Categories extends Migration
                 'constraint'     => 2,
                 'auto_increment' => TRUE
             ],
-			'name'       => [
+			'name_es'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '255',
+            ],
+            'name_eu'       => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '255',
             ],

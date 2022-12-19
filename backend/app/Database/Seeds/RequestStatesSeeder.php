@@ -16,17 +16,18 @@ class RequestStatesSeeder extends Seeder
             $item = array_map('trim', $item);
             $data[] = [
                 'id' => $item[0],
-                'name' => $item[1]
+                'name_es' => $item[1],
+                'name_eu' => $item[2]
             ];
         }
         $this->db->table('requeststates')->insertBatch($data);
     }
 
     private function listRequestStates() {
-        $str = 'P	Pendiente
-                A	Aceptada
-                C	Cancelada
-                F	Finalizada';
+        $str = 'P	Pendiente	Erantzunaren zain
+                A	Aceptada	Onartua
+                C	Cancelada	Ezeztatua
+                F	Finalizada	Burutua';
         return $str;
     }
 }

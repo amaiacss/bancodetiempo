@@ -13,10 +13,14 @@ class RequestStates extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => 1                
             ),
-            'name' => array(
+            'name_es' => array(
                 'type'       => 'VARCHAR',    
                 'constraint' => 20          
-			),      
+			), 
+            'name_eu' => array(
+                'type'       => 'VARCHAR',    
+                'constraint' => 20          
+			),     
 			'created_at' => [ 'type' => 'DATETIME' ],
 			'updated_at' => [ 'type' => 'DATETIME' ],
 			'deleted_at' => [ 'type' => 'DATETIME', 'null' => true],

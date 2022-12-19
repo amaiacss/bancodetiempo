@@ -13,8 +13,9 @@ class CategoriesSeeder extends Seeder
         while(($data = fgetcsv($csvfile, null, ",")) !== False) {
             $item = new CategoryModel();
             $item->insert([
-                'name' => $data[0],
-                'picture' => $data[1]
+                'name_es' => $data[0],
+                'name_eu' => $data[1],
+                'picture' => $data[2]
             ]);
         }
         fclose($csvfile);

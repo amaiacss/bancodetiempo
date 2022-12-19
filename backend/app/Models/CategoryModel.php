@@ -15,7 +15,7 @@ class CategoryModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'name', 'picture'
+        'name_es', 'name_eu', 'picture'
     ];
 
     // Dates
