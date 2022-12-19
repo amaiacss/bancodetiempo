@@ -45,6 +45,7 @@ $routes->group('api', function($routes) {
         $routes->get('findall', 'UsersRestController::findAll');
         $routes->get('find/(:any)', 'UsersRestController::find/$1');
         $routes->put('update', 'UsersRestController::update');
+        $routes->put('updatepass', 'UsersRestController::updatePass');
         $routes->delete('delete/(:any)', 'UsersRestController::delete/$1');
     });
     $routes->group('province', function($routes) {

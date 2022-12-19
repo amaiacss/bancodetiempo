@@ -98,27 +98,19 @@ class UsersRestController extends BaseController
     public function updatePass() {
         $model = new UserModel();
         $error_clave = false;
-
-        if(!isset($this->requestdata->pass1) || !isset($this->requestdata->pass2)) {            
-            $error_clave = true;
-            // falta algún campo
-            $error_clave_mensaje = ['error' => "empty" ];
-        } else {
-            $pass1 = str_replace(" ", "", $this->requestdata->pass1);
-            $pass2 = str_replace(" ", "", $this->requestdata->pass2);
-
-            if($pass1 != $pass2) {
-                $error_clave = true;
-                // no coinciden
-                $error_clave_mensaje = ['error' => "notsame" ];
-            }
-        }
-
-        if($error_clave) {
-            return $this->setResponseFormat('json')->respond($error_clave_mensaje);
-        } else {
-            
-        }
+        $idUser = $this->requestdata->id;
+        $userPass = $model->select("pass")->find($idUser);
+        if($userPass->pass == md5( $this->requestdata->pass )) {
+            if( isset($this->requestdata->pass1) && isset($this->requestdata->pass2) ) {
+                $pass1 = str_replace(" ", "", $this->requestdata->pass1);
+                $pass2 = str_replace(" ", "", $this->requestdata->pass2);
+                if($pass1 == $pass2) {
+                    $model->update($idUser, ["pass" => md5( $pass1 )]);
+                    $this->setResult("ok", true);
+                }
+            } 
+        }  
+        return $this->PrintResult();
     }
     
     public function update()

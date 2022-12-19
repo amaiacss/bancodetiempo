@@ -1,6 +1,6 @@
 ## REGISTRO NUEVO USUARIO
     http://localhost:8080/api/user/create
-    Tipo : post
+    Tipo : POST
     Json que recibe la api: {
                                "email": "amaia@correo.com",
                                "pass": "ASdfgh123",
@@ -26,7 +26,7 @@
 
 ## LOGIN
     http://localhost:8080/api/user/login
-    Tipo: post
+    Tipo: POST
     Json que recibe la api: {
                                "email": "amaia@correo.com",
                                "pass": "ASdfgh123"
@@ -53,7 +53,7 @@
 
 ## REGISTRO ACTIVIDADES
     localhost:8080/api/activity/create
-    Tipo: post
+    Tipo: POST
     Lo que recibe la api :
         {
             "title": "Prueba titulo",
@@ -74,7 +74,7 @@
 
 ## RECUPERAR ACTIVIDADES CON BUSQUEDA
     localhost:8080/api/activity/findall
-    Tipo: get
+    Tipo: GET
     Lo que puede recibir la api para la busqueda con filtros:
         {
             "category" : 1,
@@ -85,13 +85,23 @@
 
 ## ACTIVIDAD
     localhost:8080/api/activity/find/1
-    Tipo: get
+    Tipo: GET
     Devuelve los datos de una actividad
 
 ## LISTADO DE CATEGORIAS PARA EL DESPLEGABLE DEL BUSCADOR
     localhost:8080/api/category/getList
-    Tipo: get
+    Tipo: GET
 
+## ACTUALIZAR CONTRASEÑA
+    localhost:8080/api/user/updatepass
+    Tipo: PUT
+    Objeto que recibe la API : 
+        {
+            "id" : 14,
+            "pass"  : "A123456a",
+            "pass1" : "A123456aa",
+            "pass2" : "A123456aa"
+        }
 
 ## ACTUALIZAR DATOS DE USUARIO         
     http://localhost:8080/api/user/update
