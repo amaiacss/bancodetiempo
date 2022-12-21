@@ -83,6 +83,10 @@ $routes->group('api', function($routes) {
         $routes->get('findall', 'ProfilesRestController::findAll');
         $routes->get('find/(:any)', 'ProfilesRestController::find/$1');       
     });
+
+    $routes->group('requests', function($routes) {      
+        $routes->post('request', 'RequestsRestController::request');     
+    });
 });
 
 /*

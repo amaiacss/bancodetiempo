@@ -103,6 +103,17 @@
             "pass2" : "A123456aa"
         }
 
+
+## SOLICITAR ACTIVIDAD
+    localhost:8080/api/requests/request
+    Tipo: POST
+    Objeto que recibe la API:
+        {
+            "idUser" : 4,
+            "idActivity" : 2,
+            "idState" : "P"
+        }
+
 ## ACTUALIZAR DATOS DE USUARIO         
     http://localhost:8080/api/user/update
     Tipo: put
