@@ -78,7 +78,9 @@ $routes->group('api', function($routes) {
 
     $routes->group('profile', function($routes) {      
         $routes->post('create', 'ProfilesRestController::create'); 
-        $routes->get('findall/(:any)', 'ProfilesRestController::findAll');
+        $routes->put('update', 'ProfilesRestController::update'); 
+        $routes->put('updatePicture', 'ProfilesRestController::updatePicture'); 
+        $routes->get('findall', 'ProfilesRestController::findAll');
         $routes->get('find/(:any)', 'ProfilesRestController::find/$1');       
     });
 });

@@ -37,4 +37,7 @@ class Services extends BaseService
     public static function getCategoryImagePath(){
         return getenv('images.category.path');
     } 
+    public static function getProfileImagePath(){
+        return getenv('images.profile.path');
+    }
 }
