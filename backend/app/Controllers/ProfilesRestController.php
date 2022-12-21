@@ -11,8 +11,16 @@ class ProfilesRestController extends BaseController
     {
         $profile = $this->request->getJSON();        
         $model = new ProfileModel();
-        $model->insert($profile, true);
-        $this->setResponseFormat('json')->respond($profile);
+        $data = $model->find($profile->id);
+        if (!isSet($data)) {            
+            if(!$model->insert($profile, true)) {
+                $this->PrintResult();
+                return $this->response->setStatusCode(400);
+            } else {
+                $this->SetResult('ok', true);                
+            }
+        }
+        return $this->PrintResult();       
     }
     public function update()
     {
@@ -34,26 +42,27 @@ class ProfilesRestController extends BaseController
     {
         $profile = $this->request->getJSON();
         $model = new ProfileModel();     
-        $data = $model->find($profile->id);
-        $pictureData = base64_decode($profile->pictureData);
-        $profile->picture = "profile" . $profile->id . ".jpg";
-        $filepath = "." . Services::getProfileImagePath() . $profile->picture;        
-        file_put_contents($filepath, $pictureData);        
+        $data = $model->find($profile->id);       
+        $profile->picture = "profile" . $profile->id . ".jpg";  
         if (isSet($data)) {            
             if(!$model->update($profile->id, $profile)) {
                 $this->PrintResult();
                 return $this->response->setStatusCode(400);
             } else {
+                $pictureData = base64_decode($profile->pictureData);                
+                $filepath = "." . Services::getProfileImagePath() . $profile->picture;        
+                file_put_contents($filepath, $pictureData);   
+                $this->SetResult('picture', site_url(Services::getProfileImagePath() . $profile->picture));
                 $this->SetResult('ok', true);                
             }
-        }else{            
+        }/*else{            
             if(!$model->insert($profile->id, $profile)) {
                 $this->PrintResult();
                 return $this->response->setStatusCode(400);
             } else {
                 $this->SetResult('ok', true);                
             }
-        }
+        }*/
         return $this->PrintResult();
     }
     
