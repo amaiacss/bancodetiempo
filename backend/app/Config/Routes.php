@@ -72,7 +72,7 @@ $routes->group('api', function($routes) {
 
     $routes->group('activity', function($routes) {      
         $routes->post('create', 'ActivitiesRestController::create'); 
-        $routes->get('findall', 'ActivitiesRestController::getActivities');
+        $routes->post('findall', 'ActivitiesRestController::getActivities');
         $routes->get('find/(:any)', 'ActivitiesRestController::find/$1', ['as' => 'card-activity']);       
     });
 
