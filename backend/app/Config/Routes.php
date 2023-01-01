@@ -86,6 +86,7 @@ $routes->group('api', function($routes) {
 
     $routes->group('requests', function($routes) {      
         $routes->post('request', 'RequestsRestController::request');     
+        $routes->post('update', 'RequestsRestController::updateRequest');     
     });
 });
 

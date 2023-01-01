@@ -114,7 +114,3 @@
             "idState" : "P"
         }
 
-## ACTUALIZAR DATOS DE USUARIO         
-    http://localhost:8080/api/user/update
-    Tipo: put
-    TODO: Funciona, pero de forma básica, tengo que terminarla

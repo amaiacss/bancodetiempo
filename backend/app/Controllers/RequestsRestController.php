@@ -23,4 +23,12 @@ class RequestsRestController extends BaseController
         }
         return $this->PrintResult();   
     }
+
+    public function updateRequest() {
+        
+    }
+
+    // cancelar la solicitud
+
+
 }
