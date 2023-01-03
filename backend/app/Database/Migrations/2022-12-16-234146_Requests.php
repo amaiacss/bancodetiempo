@@ -46,6 +46,26 @@ class Requests extends Migration
         $this->forge->addForeignKey('idState', 'requeststates', 'id');
         $this->forge->createTable('requests');
 
+       /* $this->db->query("CREATE TRIGGER after_requests_update AFTER UPDATE ON requests ".
+        "FOR EACH ROW ".
+        "BEGIN ".
+        "IF new.idState = 'F' THEN ".
+		"UPDATE profiles SET credit = credit + new.hours ".
+		"WHERE id = (SELECT idUser FROM activities WHERE id = new.idActivity); ".
+		"UPDATE profiles SET credit = credit - new.hours ".
+		"WHERE id = new.idUser; ".    
+        "END IF; ".
+        "END ");*/
+        $this->db->query('CREATE TRIGGER after_requests_update AFTER UPDATE ON requests '.
+        'FOR EACH ROW '.
+        'BEGIN '.
+        'IF new.idState = \'F\' THEN '.
+		'UPDATE profiles SET credit = credit + new.hours '.
+		'WHERE id = (SELECT idUser FROM activities WHERE id = new.idActivity); '.
+		'UPDATE profiles SET credit = credit - new.hours '.
+		'WHERE id = new.idUser; '.    
+        'END IF; '.
+        'END ');
     }
 
     public function down()
