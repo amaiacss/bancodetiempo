@@ -114,3 +114,13 @@
             "idState" : "P"
         }
 
+## ACTUALIZAR ESTADO DE LA ACTIVIDAD
+    localhost:8080/api/requests/update
+    Tipo: POST
+        Objeto que recibe la API:
+        {
+            "id" : 4,
+            "idState" : "A"
+        }
+    
+
