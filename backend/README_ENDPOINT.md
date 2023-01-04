@@ -109,7 +109,7 @@
     Tipo: POST
     Objeto que recibe la API:
         {
-            "idUser" : 4,
+            "idUser" : 4,       // ESTE ID ES EL DEL QUE SOLICITA LA ACTIVIDAD
             "idActivity" : 2,
             "idState" : "P"
         }
@@ -117,10 +117,19 @@
 ## ACTUALIZAR ESTADO DE LA ACTIVIDAD
     localhost:8080/api/requests/update
     Tipo: POST
-        Objeto que recibe la API:
+        Objeto que recibe la API:   ( EL ID DE LA SOLICITUD Y EL ESTADO AL QUE SE QUIERE ACTUALIZAR )
         {
             "id" : 4,
             "idState" : "A"
         }
+
+## OBTNENER LISTADO DE SOLICITUDES REALIZADAS A OTROS USUARIOS
+    localhost:8080/api/requests/getRequests/$1   ( el parametro de la URL, es el id del usuario logado )
+    Tipo: GET
+
+## OBTENER LAS SOLICITUDES QUE SE HAN REALIZADO AL USUARIO LOGADO
+    localhost:8080/api/requests/getRequestsByactivities/$1    ( el parametro de la URL, es el id del usuario logado )
+    Tipo: GET
+
     
 
