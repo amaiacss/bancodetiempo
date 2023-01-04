@@ -86,7 +86,9 @@ $routes->group('api', function($routes) {
 
     $routes->group('requests', function($routes) {      
         $routes->post('create', 'RequestsRestController::create');     
-        $routes->post('update', 'RequestsRestController::update');     
+        $routes->post('update', 'RequestsRestController::update');
+        $routes->get('getRequests/(:any)', 'RequestsRestController::getRequests/$1');
+        $routes->get('getRequestsByactivities/(:any)', 'RequestsRestController::getRequestsByactivities/$1');
     });
 });
 
