@@ -21,4 +21,12 @@ class Correo extends Core {
 
         return $this->EnviarEmail($from = '', $datos['email'], 'Banco de tiempo - Validar Cuenta', $plain_text = '', $html);
     }
+
+    public function contacto($contact) {
+        $datos = [];
+        $datos['name'] = $contact->name;
+        $datos['email'] = $contact->email;
+        $html = view('emails/form_contact', $datos);
+        return $this->EnviarEmail($from = $datos['email'], 'bancodetiempo@alwaysdata.net' , 'Formulario contacto', $plain_text = '', $html);
+    }
 }
