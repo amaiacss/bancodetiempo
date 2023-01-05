@@ -90,6 +90,10 @@ $routes->group('api', function($routes) {
         $routes->get('getRequests/(:any)', 'RequestsRestController::getRequests/$1');
         $routes->get('getRequestsByactivities/(:any)', 'RequestsRestController::getRequestsByactivities/$1');
     });
+
+    $routes->group('contact', function ($routes) {
+        $routes->post('index', 'ContactRestController::index');
+    });
 });
 
 /*
