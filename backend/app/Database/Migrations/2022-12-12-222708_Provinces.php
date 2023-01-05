@@ -16,10 +16,7 @@ class Provinces extends Migration
 			'name'       => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '255',
-            ],
-            'created_at' => [ 'type' => 'DATETIME' ],
-			'updated_at' => [ 'type' => 'DATETIME' ],
-			'deleted_at' => [ 'type' => 'DATETIME', 'null' => true],	
+            ]	
 		]);
 		$this->forge->addKey('code', TRUE);
 		$this->forge->createTable('provinces');

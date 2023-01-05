@@ -25,10 +25,7 @@ class Cities extends Migration
 			'name'       => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '255',
-            ],
-            'created_at' => [ 'type' => 'DATETIME' ],
-			'updated_at' => [ 'type' => 'DATETIME' ],
-			'deleted_at' => [ 'type' => 'DATETIME', 'null' => true],	
+            ]	
 		]);
 		$this->forge->addPrimaryKey('code');           
         $this->forge->addForeignKey('codeProvince','provinces','code');

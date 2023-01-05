@@ -20,10 +20,7 @@ class RequestStates extends Migration
             'name_eu' => array(
                 'type'       => 'VARCHAR',    
                 'constraint' => 20          
-			),     
-			'created_at' => [ 'type' => 'DATETIME' ],
-			'updated_at' => [ 'type' => 'DATETIME' ],
-			'deleted_at' => [ 'type' => 'DATETIME', 'null' => true],
+			)
         ]);
 
         $this->forge->addKey('id', true);        
