@@ -131,5 +131,9 @@
     localhost:8080/api/requests/getRequestsByactivities/$1    ( el parametro de la URL, es el id del usuario logado )
     Tipo: GET
 
+## FORMUALRIO DE CONTACTO ( Se recibe los datos en el email de alwaysdata)
+    localhost:8080/api/contact/index
+    Tipo: POST
+
     
 
