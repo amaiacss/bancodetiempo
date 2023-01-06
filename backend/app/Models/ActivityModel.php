@@ -15,7 +15,7 @@ class ActivityModel extends Model
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'title', 'description', 'picture', 'date', 'idCategory', 'idUser'
+        'title', 'description', /*'picture',*/ 'idCategory', 'idUser', 'created_at', 'updated_at'
     ];
 
     // Dates

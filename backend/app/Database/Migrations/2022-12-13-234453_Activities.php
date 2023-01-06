@@ -25,10 +25,10 @@ class Activities extends Migration
            /* 'picture' => array(
                 'type'       => 'VARCHAR',
                 'constraint' => 255
-			),     */      
+			),    
             'date' => array(
                 'type'    => 'DATETIME',                
-			),
+			), */      
             'idCategory' => [
 				'type'           => 'INT',
                 'constraint'     => 2                
@@ -47,6 +47,9 @@ class Activities extends Migration
         $this->forge->addForeignKey('idCategory', 'categories', 'id');
         $this->forge->addForeignKey('idUser', 'users', 'id');
         $this->forge->createTable('activities');
+
+        $seeder = \Config\Database::seeder();
+		$seeder->call('ActivitySeeder');
 
     }
 
