@@ -34,7 +34,9 @@ class UsersSeeder extends Seeder
                 5	naiarafisio@gmail.com	naiarafisio
                 6	kepabilbao@gmail.com	kbilbao
                 7	perugomez@gmail.com	peru83
-                9000	superuser@omnipresente.soy	superuser';
+                8	laia1234@gmail.com	laiaelko23
+                9000	superuser@omnipresente.soy	superuser
+                10	imamadari@yahoo.es	madariagaima33';
         return $str;
     }
 }
