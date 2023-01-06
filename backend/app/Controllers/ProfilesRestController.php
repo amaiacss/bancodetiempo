@@ -90,7 +90,7 @@ class ProfilesRestController extends BaseController
         
         $data = $model->findAll();
         foreach($data as $key => $val) {      
-            if(isset($data[$key]->picture)) {
+            if(isset($data[$key]->picture) && $data[$key]->picture!='') {
                 $data[$key]->picture = site_url(Services::getProfileImagePath() . $data[$key]->picture);    
             }                   
         }       
