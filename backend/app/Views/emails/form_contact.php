@@ -8,8 +8,10 @@ echo $this->extend($config->viewLayoutEmail);
 <p>Hola:</p>
 
 <strong>Formulario de contacto, esto son los datos:</strong>
-<p> <?php echo $email; ?> </p>
-<p> <?php echo $name; ?> </p>
+<p> Email: <?php echo $email; ?> </p>
+<p> Nombre: <?php echo $name; ?> </p>
+<p> Ubicación: <?php echo $location; ?> </p>
+<p> Mensaje: <?php echo $message; ?> </p>
 
 
 <?php echo $this->endSection() ?>

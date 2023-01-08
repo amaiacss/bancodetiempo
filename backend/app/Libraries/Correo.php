@@ -26,6 +26,8 @@ class Correo extends Core {
         $datos = [];
         $datos['name'] = $contact->name;
         $datos['email'] = $contact->email;
+        $datos['location'] = $contact->location;
+        $datos['message'] = $contact->message;
         $html = view('emails/form_contact', $datos);
         return $this->EnviarEmail($from = $datos['email'], 'bancodetiempo@alwaysdata.net' , 'Formulario contacto', $plain_text = '', $html);
     }
