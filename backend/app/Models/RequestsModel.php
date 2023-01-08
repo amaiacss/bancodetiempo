@@ -15,7 +15,7 @@ class RequestsModel extends Model
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        "idState", "idActivity", "idUser", "hours"
+        "idState", "idActivity", "idUser", "hours", 'created_at', 'updated_at'
     ];
 
     // Dates

@@ -14,9 +14,6 @@ class Requests extends Migration
                 'constraint'     => 11,
                 'auto_increment' => TRUE
             ),
-            'date' => array(
-                'type'       => 'DATETIME'                
-			),
             'hours' => array(
                 'type'       => 'INT',
                 'constraint' => 2,
@@ -46,16 +43,6 @@ class Requests extends Migration
         $this->forge->addForeignKey('idState', 'requeststates', 'id');
         $this->forge->createTable('requests');
 
-       /* $this->db->query("CREATE TRIGGER after_requests_update AFTER UPDATE ON requests ".
-        "FOR EACH ROW ".
-        "BEGIN ".
-        "IF new.idState = 'F' THEN ".
-		"UPDATE profiles SET credit = credit + new.hours ".
-		"WHERE id = (SELECT idUser FROM activities WHERE id = new.idActivity); ".
-		"UPDATE profiles SET credit = credit - new.hours ".
-		"WHERE id = new.idUser; ".    
-        "END IF; ".
-        "END ");*/
         $this->db->query('CREATE TRIGGER after_requests_update AFTER UPDATE ON requests '.
         'FOR EACH ROW '.
         'BEGIN '.
@@ -66,6 +53,20 @@ class Requests extends Migration
 		'WHERE id = new.idUser; '.    
         'END IF; '.
         'END ');
+
+        $this->db->query('CREATE TRIGGER after_requests_insert AFTER INSERT ON requests '.
+        'FOR EACH ROW '.
+        'BEGIN '.
+        'IF new.idState = \'F\' THEN '.
+		'UPDATE profiles SET credit = credit + new.hours '.
+		'WHERE id = (SELECT idUser FROM activities WHERE id = new.idActivity); '.
+		'UPDATE profiles SET credit = credit - new.hours '.
+		'WHERE id = new.idUser; '.    
+        'END IF; '.
+        'END ');
+
+        $seeder = \Config\Database::seeder();
+		$seeder->call('RequestsSeeder');
     }
 
     public function down()
