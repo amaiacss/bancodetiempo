@@ -11,7 +11,7 @@ class ActivitiesRestController extends BaseController
     public function getActivities()
     {       
         $model = new ActivityModel();
-        $model->select('activities.id, activities.title, activities.idUser, activities.created_at AS dateActivity, categories.name_es AS category_es, categories.name_eu AS category_eu, categories.picture, profiles.firstName, cities.name AS city, provinces.name AS province');
+        $model->select('activities.id, activities.title, activities.idUser, activities.created_at AS dateActivity, activities.description, categories.name_es AS category_es, categories.name_eu AS category_eu, categories.picture, profiles.firstName, profiles.lastName, cities.name AS city, provinces.name AS province');
         $model->where('activities.deleted_at', NULL);
         $model->join('categories', 'activities.idCategory = categories.id');
         $model->join('profiles', 'activities.idUser = profiles.id');  // Un usuario que no tenga perfil no podrá publicar, por lo que este join no debe fallar
@@ -24,6 +24,7 @@ class ActivitiesRestController extends BaseController
         if(isset($this->requestdata->search)) $model->like('activities.description', $this->requestdata->search);
         if(isset($this->requestdata->idUser)) $model->where('profiles.id', $this->requestdata->idUser);
         
+        $model->orderBy('activities.updated_at', 'DESC');
         $data = $model->findAll();
         foreach($data as $key => $val) {      
             $data[$key]->picture = site_url(Services::getCategoryImagePath() . $data[$key]->picture);
@@ -52,5 +53,10 @@ class ActivitiesRestController extends BaseController
             $this->SetResult('ok', true);
             return $this->PrintResult();
         }
+    }
+
+    public function lastActivities() {
+        // 
+
     }
 }
