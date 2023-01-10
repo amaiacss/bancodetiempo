@@ -135,5 +135,10 @@
     localhost:8080/api/contact/index
     Tipo: POST
 
+## ÚLTIMOS INTERCAMBIOS
+    localhost:8080/api/activity/lastActivities
+    Tipo: POST
+    
+
     
 

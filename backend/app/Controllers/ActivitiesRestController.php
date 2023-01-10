@@ -57,34 +57,24 @@ class ActivitiesRestController extends BaseController
     }
 
     public function lastActivities() {
-    //     $model = new ActivityModel();
-    //     $model->select('activities.title, activities.updated_at AS dateActivity, categories.name_es AS category_es, categories.name_eu AS category_eu, categories.picture, profiles.firstName AS nombrePropietario, profiles.lastName AS apellidoPropietario, cities.name AS city, provinces.name AS province');
-    //     $model->join('requests', 'requests.idUser = ');
-    //     $model->join('categories', 'activities.idCategory = categories.id');
-    //     $model->join('profiles', 'activities.idUser = profiles.id', 'LEFT');  // este es el usuario que ha solicitado
-    //    // $model->join('profiles', 'requests.idUser = profiles.id');
-    //     $model->join('cities', 'profiles.locationCode = cities.code');
-    //     $model->join('provinces', 'provinces.code = cities.codeProvince');
-    //     $model->where('requests.idState', 'F');
-    //     $data = $model->findAll();
-
-        // Recupera el nombre y apellidos de la persona que solicitó la actividad
-        // Falta el nombre y apellidos de la persona que publicó la actividad
         $model = new \App\Models\RequestsModel();
-        $model->select('requests.created_at AS DateRequest, profiles.firstName, profiles.lastName, activities.id, activities.title, categories.name_es AS category_es, categories.name_eu AS category_eu');
+        $model->select('date_format(requests.created_at, "%d-%m-%Y") AS DateRequest, profiles.firstName, profiles.lastName, profiles.picture AS userPicture, activities.title, categories.name_es AS category_es, categories.name_eu AS category_eu, categories.picture AS categoryPicture');
         $model->where('requests.idState', 'F');
         $model->join('profiles', 'requests.idUser = profiles.id');
         $model->join('activities', 'activities.id = requests.idActivity');
         $model->join('categories', 'activities.idCategory = categories.id');
-        $data = $model->findAll();
+        $subquery = $this->db->table('profiles')->select('CONCAT(profiles.firstName, " " , profiles.lastName)')->where('activities.idUser = profiles.id');
+        $model->selectSubquery($subquery, 'nameOwner');
+        $subqueryPicture = $this->db->table('profiles')->select('picture')->where('activities.idUser = profiles.id');
+        $model->selectSubquery($subqueryPicture, 'pictureOwner');
+        $model->orderBy('requests.updated_at', 'DESC');
+        $model->limit(10);
+        $data = $model->find();
 
-        $modelA = new ActivityModel();
-        $modelA->select('profiles.firstName AS nameOwner, profiles.lastName AS lastNameOwner');
-        $modelA->join('profiles', 'activities.idUser = profiles.id');
-        $data1 = $modelA->findAll();
-        $this->SetResult('ok', true);
+        if(count($data) > 0) {
+            $this->SetResult('ok', true);
+        }
         $this->SetResult('data', $data);
-        $this->SetResult('data1', $data1);
         return $this->PrintResult();
     }
 }
