@@ -38,7 +38,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('activacion/(:num)', 'UsersRestController::activar/$1', ['as' => 'registro-activar']);
 
-$routes->group('api', function($routes) {
+$routes->group('api', ["filter" => "corsFilter"],function($routes) {
     $routes->group('user', function($routes) {
         $routes->post('create', 'UsersRestController::create');
         $routes->post('login', 'UsersRestController::login');        
@@ -73,7 +73,8 @@ $routes->group('api', function($routes) {
     $routes->group('activity', function($routes) {      
         $routes->post('create', 'ActivitiesRestController::create'); 
         $routes->post('findall', 'ActivitiesRestController::getActivities');
-        $routes->get('find/(:any)', 'ActivitiesRestController::find/$1', ['as' => 'card-activity']);       
+        $routes->get('find/(:any)', 'ActivitiesRestController::find/$1', ['as' => 'card-activity']);  
+        $routes->get('lastActivities', 'ActivitiesRestController::lastActivities');     
     });
 
     $routes->group('profile', function($routes) {      
