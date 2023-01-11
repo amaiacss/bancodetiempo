@@ -94,7 +94,7 @@ class RequestsRestController extends BaseController
         $subqueryPicture = $this->db->table('profiles')->select('picture')->where('activities.idUser = profiles.id');
         $model->selectSubquery($subqueryPicture, 'pictureOwner');
         $model->orderBy('requests.updated_at', 'DESC');
-        $model->limit(10);
+        $model->limit(9);
         $data = $model->find();
 
         foreach($data as $key => $val) {    
