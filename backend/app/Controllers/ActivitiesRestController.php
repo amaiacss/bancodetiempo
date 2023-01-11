@@ -21,7 +21,7 @@ class ActivitiesRestController extends BaseController
         // filtros
         if(isset($this->requestdata->category)) $model->where('activities.idCategory', $this->requestdata->category);
         if(isset($this->requestdata->province)) $model->where('provinces.code', $this->requestdata->province);
-        if(isset($this->requestdata->city)) $model->where('cities.codeCity', $this->requestdata->city);
+        if(isset($this->requestdata->city)) $model->where('cities.code', $this->requestdata->city);
         if(isset($this->requestdata->search)) $model->like('activities.description', $this->requestdata->search);
         if(isset($this->requestdata->idUser)) $model->where('profiles.id', $this->requestdata->idUser);
         
