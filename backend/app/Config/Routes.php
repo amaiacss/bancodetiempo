@@ -74,7 +74,7 @@ $routes->group('api', ["filter" => "corsFilter"],function($routes) {
         $routes->post('create', 'ActivitiesRestController::create'); 
         $routes->post('findall', 'ActivitiesRestController::getActivities');
         $routes->get('find/(:any)', 'ActivitiesRestController::find/$1', ['as' => 'card-activity']);  
-        $routes->get('lastActivities', 'ActivitiesRestController::lastActivities');     
+       
     });
 
     $routes->group('profile', function($routes) {      
@@ -90,6 +90,7 @@ $routes->group('api', ["filter" => "corsFilter"],function($routes) {
         $routes->post('update', 'RequestsRestController::update');
         $routes->get('getRequests/(:any)', 'RequestsRestController::getRequests/$1');
         $routes->get('getRequestsByactivities/(:any)', 'RequestsRestController::getRequestsByactivities/$1');
+        $routes->get('lastRequests', 'RequestsRestController::lastFinishedRequests');     
     });
 
     $routes->group('contact', function ($routes) {

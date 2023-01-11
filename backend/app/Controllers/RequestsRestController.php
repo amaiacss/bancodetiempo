@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\RequestsModel;
+use Config\Services;
 
 class RequestsRestController extends BaseController
 {
@@ -80,4 +81,36 @@ class RequestsRestController extends BaseController
         $this->SetResult('data', $data);
         return $this->PrintResult();
     } 
+
+    public function lastFinishedRequests() {
+        $model = new \App\Models\RequestsModel();
+        $model->select('date_format(requests.created_at, "%d-%m-%Y") AS DateRequest, profiles.firstName, profiles.lastName, profiles.picture AS userPicture, activities.title, categories.name_es AS category_es, categories.name_eu AS category_eu, categories.picture AS categoryPicture');
+        $model->where('requests.idState', 'F');
+        $model->join('profiles', 'requests.idUser = profiles.id');
+        $model->join('activities', 'activities.id = requests.idActivity');
+        $model->join('categories', 'activities.idCategory = categories.id');
+        $subquery = $this->db->table('profiles')->select('CONCAT(profiles.firstName, " " , profiles.lastName)')->where('activities.idUser = profiles.id');
+        $model->selectSubquery($subquery, 'nameOwner');
+        $subqueryPicture = $this->db->table('profiles')->select('picture')->where('activities.idUser = profiles.id');
+        $model->selectSubquery($subqueryPicture, 'pictureOwner');
+        $model->orderBy('requests.updated_at', 'DESC');
+        $model->limit(10);
+        $data = $model->find();
+
+        foreach($data as $key => $val) {    
+            if(isset($data[$key]->userPicture) && $data[$key]->userPicture!='') {  
+                $data[$key]->userPicture = site_url(Services::getProfileImagePath() . $data[$key]->userPicture);
+            }
+            if(isset($data[$key]->pictureOwner) && $data[$key]->pictureOwner!='') {  
+                $data[$key]->pictureOwner = site_url(Services::getProfileImagePath() . $data[$key]->pictureOwner);
+            }
+            $data[$key]->categoryPicture = site_url(Services::getCategoryImagePath() . $data[$key]->categoryPicture);
+        }     
+
+        if(count($data) > 0) {
+            $this->SetResult('ok', true);
+        }
+        $this->SetResult('data', $data);
+        return $this->PrintResult();
+    }
 }
