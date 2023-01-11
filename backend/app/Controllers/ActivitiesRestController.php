@@ -11,7 +11,7 @@ class ActivitiesRestController extends BaseController
     public function getActivities()
     {       
         $model = new ActivityModel();
-        $model->select('activities.id, activities.title, activities.idUser, activities.created_at AS dateActivity, activities.description, categories.name_es AS category_es, categories.name_eu AS category_eu, categories.picture, profiles.firstName, profiles.lastName, profiles.phone, users.email, cities.name AS city, provinces.name AS province');
+        $model->select('activities.id, activities.title, activities.idUser, activities.created_at AS dateActivity, activities.description, categories.name_es AS category_es, categories.name_eu AS category_eu, categories.picture, profiles.firstName, profiles.lastName, profiles.phone, users.email, profiles.picture As profilePicture, cities.name AS city, provinces.name AS province');
         $model->where('activities.deleted_at', NULL);
         $model->join('categories', 'activities.idCategory = categories.id');
         $model->join('profiles', 'activities.idUser = profiles.id');  // Un usuario que no tenga perfil no podrá publicar, por lo que este join no debe fallar
@@ -29,6 +29,9 @@ class ActivitiesRestController extends BaseController
         $data = $model->findAll();
         foreach($data as $key => $val) {      
             $data[$key]->picture = site_url(Services::getCategoryImagePath() . $data[$key]->picture);
+            if(isset($data[$key]->profilePicture) && $data[$key]->profilePicture!='') {
+                $data[$key]->profilePicture = site_url(Services::getProfileImagePath() . $data[$key]->profilePicture);
+            }
             $data[$key]->url = site_url(route_to('card-activity', $data[$key]->id));
         }       
         $this->SetResult('ok', true);
