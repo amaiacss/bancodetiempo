@@ -44,10 +44,11 @@ class RequestsRestController extends BaseController
     public function getRequests($id) {
         $model = new RequestsModel();
 
-        $model->select('requests.id, requests.updated_at, requeststates.name_es, requeststates.name_eu, activities.title');
+        $model->select('requests.id, requests.updated_at, requeststates.name_es, requeststates.name_eu, activities.title, users.username');
         $model->where('requests.idUser', $id);
         $model->join('requeststates', 'requeststates.id = requests.idState');
         $model->join('activities', 'activities.id = requests.idActivity');
+        $model->join('users', 'users.id = activities.idUser');
         $data = $model->findAll();
         if(count($data) > 0) {
             $this->SetResult('ok', true);
