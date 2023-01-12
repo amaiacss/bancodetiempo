@@ -83,10 +83,11 @@ class ProfilesRestController extends BaseController
     {
         $model = new ProfileModel();
 
-        $model->select('profiles.id, profiles.firstName, profiles.lastName, profiles.phone, profiles.aboutMe, profiles.picture, profiles.credit, cities.code AS city_code, cities.name AS city, provinces.code AS province_code, provinces.name AS province');
+        $model->select('profiles.id, profiles.firstName, profiles.lastName, profiles.phone, profiles.aboutMe, profiles.picture, profiles.credit, cities.code AS city_code, cities.name AS city, provinces.code AS province_code, provinces.name AS province, users.username');
         $model->where('profiles.id', $id);
         $model->join('cities', 'profiles.locationCode = cities.code');
         $model->join('provinces', 'provinces.code = cities.codeProvince');
+        $model->join('users', 'users.id = profiles.id');
         
         $data = $model->findAll();
         foreach($data as $key => $val) {      
