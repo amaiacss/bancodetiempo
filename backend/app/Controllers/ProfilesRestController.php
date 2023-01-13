@@ -65,6 +65,7 @@ class ProfilesRestController extends BaseController
         }*/
         return $this->PrintResult();
     }
+    /* ¿ELIMINAR?
     
     public function delete($id)
     {
@@ -78,6 +79,7 @@ class ProfilesRestController extends BaseController
         $model = new ProfileModel();
         return $this->response->setStatusCode(200)->setJSON($model->findAll());
     }
+    */
     
     public function find($id)
     {

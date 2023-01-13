@@ -77,7 +77,6 @@ class UsersRestController extends BaseController
         $urlerror = Services::getFrontURL() . "/login?verified=error";        
         $model = new \App\Models\UserModel();
         $model->where('activationCode', $cod);
-        //$model->where('verificado', 0);
         $res = $model->findAll();
         
         if(count($res) == 0) { header("Location: $urlerror"); exit(); }
@@ -111,32 +110,5 @@ class UsersRestController extends BaseController
             } 
         }  
         return $this->PrintResult();
-    }
-    
-    public function update()
-    {
-        $user = $this->request->getJSON();
-        $model = new UserModel();
-        $model->update($user->id, $user);
-        return $this->response->setStatusCode(200);
-    }
-    
-    public function delete($id)
-    {
-        $user = $this->request->getJSON();
-        $model = new UserModel();
-        $model->delete($id);
-        return $this->response->setStatusCode(200);
-    }
-    public function findAll()
-    {
-        $model = new UserModel();
-        return $this->response->setStatusCode(200)->setJSON($model->findAll());
-    }
-    
-    public function find($id)
-    {
-        $model = new UserModel();
-        return $this->response->setStatusCode(200)->setJSON($model->find($id));
     }
 }

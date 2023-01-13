@@ -38,12 +38,13 @@ class ActivitiesRestController extends BaseController
         $this->SetResult('data', $data);
         return $this->PrintResult();
     }
-    
+    /* ¿ELIMINAR?
     public function find($id)
     {
         $model = new ActivityModel();
         return $this->response->setStatusCode(200)->setJSON($model->find($id));
     }
+    */
 
     public function create()
     {

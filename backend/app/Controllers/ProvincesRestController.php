@@ -6,6 +6,7 @@ use App\Models\ProvinceModel;
 
 class ProvincesRestController extends BaseController
 {    
+    /* ¿ELIMINAR?
     public function create()
     {
         $province = $this->requestdata;
@@ -41,6 +42,7 @@ class ProvincesRestController extends BaseController
         }
         return $this->setResponseFormat('json')->respond(["message" => "Province deleted"]);
     }
+    */
     public function findAll()
     {
         $model = new ProvinceModel();

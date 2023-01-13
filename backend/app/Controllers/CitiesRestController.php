@@ -5,7 +5,8 @@ namespace App\Controllers;
 use App\Models\CityModel;
 
 class CitiesRestController extends BaseController
-{    
+{   
+    /* ¿ELIMINAR? 
     public function create()
     {
         $city = $this->requestdata;
@@ -39,6 +40,7 @@ class CitiesRestController extends BaseController
         }
         return $this->setResponseFormat('json')->respond(["message" => "City deleted"]);
     }
+    */
     public function findAll()
     {
         $model = new CityModel();
