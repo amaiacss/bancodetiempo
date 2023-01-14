@@ -27,7 +27,7 @@ class CorsFilter implements FilterInterface {
 
         $allowed_domains = array(
             'https://bt-app-eus.web.app',
-            'https://localhost:4200'
+            'http://localhost:4200'
         );
 
         if(in_array($origin, $allowed_domains)) {
