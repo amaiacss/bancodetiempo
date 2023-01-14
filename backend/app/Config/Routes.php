@@ -25,7 +25,7 @@ $routes->set404Override();
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-$routes->setAutoRoute(true);
+$routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -37,34 +37,35 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('activacion/(:num)', 'UsersRestController::activar/$1', ['as' => 'registro-activar']);
+$routes->options('(:any)', '', ['filter' => 'cors']);
 
-$routes->group('api', ["filter" => "corsFilter"],function($routes) {
+$routes->group('api', ['filter' => 'cors'], function($routes) {
     $routes->group('user', function($routes) {
         $routes->post('create', 'UsersRestController::create');
         $routes->post('login', 'UsersRestController::login');        
-        $routes->get('findall', 'UsersRestController::findAll');
+       // $routes->get('findall', 'UsersRestController::findAll');
         $routes->get('find/(:any)', 'UsersRestController::find/$1');
-        $routes->put('update', 'UsersRestController::update');
+      //  $routes->put('update', 'UsersRestController::update');
         $routes->put('updatepass', 'UsersRestController::updatePass');
-        $routes->delete('delete/(:any)', 'UsersRestController::delete/$1');
+      //  $routes->delete('delete/(:any)', 'UsersRestController::delete/$1');
     });
     $routes->group('province', function($routes) {
-        $routes->post('create', 'ProvincesRestController::create');
+      //  $routes->post('create', 'ProvincesRestController::create');
         $routes->get('findall', 'ProvincesRestController::findAll');
         $routes->get('find/(:any)', 'ProvincesRestController::find/$1');
-        $routes->put('update', 'ProvincesRestController::update');
-        $routes->delete('delete/(:any)', 'ProvincesRestController::delete/$1');
+      //  $routes->put('update', 'ProvincesRestController::update');
+      //  $routes->delete('delete/(:any)', 'ProvincesRestController::delete/$1');
     });
     $routes->group('city', function($routes) {
-        $routes->post('create', 'CitiesRestController::create');
+      //  $routes->post('create', 'CitiesRestController::create');
         $routes->get('findall', 'CitiesRestController::findAll');
         $routes->get('find/(:any)', 'CitiesRestController::find/$1');
         $routes->get('findByProvince/(:any)', 'CitiesRestController::findByProvince/$1');
-        $routes->put('update', 'CitiesRestController::update');
-        $routes->delete('delete/(:any)', 'CitiesRestController::delete/$1');
+       // $routes->put('update', 'CitiesRestController::update');
+      //  $routes->delete('delete/(:any)', 'CitiesRestController::delete/$1');
     });
     $routes->group('category', function($routes) {      
-        $routes->post('create', 'CategoriesRestController::create'); 
+       // $routes->post('create', 'CategoriesRestController::create'); 
         $routes->get('findall', 'CategoriesRestController::findAll');
         $routes->get('find/(:any)', 'CategoriesRestController::find/$1');       
         $routes->get('getList', 'CategoriesRestController::getListCategories');       
