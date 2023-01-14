@@ -44,7 +44,7 @@ class RequestsRestController extends BaseController
     public function getRequests($id) {
         $model = new RequestsModel();
 
-        $model->select('requests.id, requests.updated_at, requeststates.name_es, requeststates.name_eu, activities.title, users.username');
+        $model->select('requests.id, requests.updated_at, requeststates.name_es, requeststates.name_eu, activities.title, users.username, requests.hours');
         $model->where('requests.idUser', $id);
         $model->join('requeststates', 'requeststates.id = requests.idState');
         $model->join('activities', 'activities.id = requests.idActivity');
@@ -71,7 +71,7 @@ class RequestsRestController extends BaseController
                 array_push($activitiesid, $value->id);
             }
             $model = new RequestsModel();
-            $model->select('requests.id, requests.updated_at, requeststates.name_es, requeststates.name_eu, activities.title, users.username');
+            $model->select('requests.id, requests.updated_at, requeststates.name_es, requeststates.name_eu, activities.title, users.username, requests.hours');
             $model->join('requeststates', 'requeststates.id = requests.idState');
             $model->join('activities', 'activities.id = requests.idActivity');
             $model->join('users', 'users.id = requests.idUser');
