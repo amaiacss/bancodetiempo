@@ -22,7 +22,10 @@ class ActivitiesRestController extends BaseController
         if(isset($this->requestdata->category)) $model->where('activities.idCategory', $this->requestdata->category);
         if(isset($this->requestdata->province)) $model->where('provinces.code', $this->requestdata->province);
         if(isset($this->requestdata->city)) $model->where('cities.code', $this->requestdata->city);
-        if(isset($this->requestdata->search)) $model->like('activities.description', $this->requestdata->search);
+        if(isset($this->requestdata->search)) {
+            $model->like('activities.description', $this->requestdata->search);
+            $model->orlike('activities.title', $this->requestdata->search);
+        }
         if(isset($this->requestdata->idUser)) $model->where('profiles.id', $this->requestdata->idUser);
         
         $model->orderBy('activities.updated_at', 'DESC');
@@ -38,14 +41,7 @@ class ActivitiesRestController extends BaseController
         $this->SetResult('data', $data);
         return $this->PrintResult();
     }
-    /* ¿ELIMINAR?
-    public function find($id)
-    {
-        $model = new ActivityModel();
-        return $this->response->setStatusCode(200)->setJSON($model->find($id));
-    }
-    */
-
+    
     public function create()
     {
         $activity = $this->requestdata;        
