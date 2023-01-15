@@ -111,4 +111,10 @@ class UsersRestController extends BaseController
         }  
         return $this->PrintResult();
     }
+
+    public function find($id)
+    {
+        $model = new UserModel();
+        return $this->response->setStatusCode(200)->setJSON($model->find($id));
+    }
 }

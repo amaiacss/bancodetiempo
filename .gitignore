@@ -125,4 +125,5 @@ nb-configuration.xml
 /results/
 /phpunit*.xml
 /.phpunit.*.cache
-
+/Copia_Controllers_y_Routes_antes_de_borrar_metodos
+.gitignore
