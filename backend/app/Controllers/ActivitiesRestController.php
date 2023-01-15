@@ -35,7 +35,6 @@ class ActivitiesRestController extends BaseController
             if(isset($data[$key]->profilePicture) && $data[$key]->profilePicture!='') {
                 $data[$key]->profilePicture = site_url(Services::getProfileImagePath() . $data[$key]->profilePicture);
             }
-            $data[$key]->url = site_url(route_to('card-activity', $data[$key]->id));
         }       
         $this->SetResult('ok', true);
         $this->SetResult('data', $data);

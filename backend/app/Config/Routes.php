@@ -42,47 +42,32 @@ $routes->options('(:any)', '', ['filter' => 'cors']);
 $routes->group('api', ['filter' => 'cors'], function($routes) {
     $routes->group('user', function($routes) {
         $routes->post('create', 'UsersRestController::create');
-        $routes->post('login', 'UsersRestController::login');        
-       // $routes->get('findall', 'UsersRestController::findAll');
+        $routes->post('login', 'UsersRestController::login');
         $routes->get('find/(:any)', 'UsersRestController::find/$1');
-      //  $routes->put('update', 'UsersRestController::update');
         $routes->put('updatepass', 'UsersRestController::updatePass');
-      //  $routes->delete('delete/(:any)', 'UsersRestController::delete/$1');
     });
+
     $routes->group('province', function($routes) {
-      //  $routes->post('create', 'ProvincesRestController::create');
         $routes->get('findall', 'ProvincesRestController::findAll');
-        $routes->get('find/(:any)', 'ProvincesRestController::find/$1');
-      //  $routes->put('update', 'ProvincesRestController::update');
-      //  $routes->delete('delete/(:any)', 'ProvincesRestController::delete/$1');
     });
+
     $routes->group('city', function($routes) {
-      //  $routes->post('create', 'CitiesRestController::create');
-        $routes->get('findall', 'CitiesRestController::findAll');
-        $routes->get('find/(:any)', 'CitiesRestController::find/$1');
         $routes->get('findByProvince/(:any)', 'CitiesRestController::findByProvince/$1');
-       // $routes->put('update', 'CitiesRestController::update');
-      //  $routes->delete('delete/(:any)', 'CitiesRestController::delete/$1');
     });
+
     $routes->group('category', function($routes) {      
-       // $routes->post('create', 'CategoriesRestController::create'); 
-        $routes->get('findall', 'CategoriesRestController::findAll');
-        $routes->get('find/(:any)', 'CategoriesRestController::find/$1');       
-        $routes->get('getList', 'CategoriesRestController::getListCategories');       
+        $routes->get('findall', 'CategoriesRestController::findAll');             
     });
 
     $routes->group('activity', function($routes) {      
         $routes->post('create', 'ActivitiesRestController::create'); 
-        $routes->post('findall', 'ActivitiesRestController::getActivities');
-        $routes->get('find/(:any)', 'ActivitiesRestController::find/$1', ['as' => 'card-activity']);  
-       
+        $routes->post('findall', 'ActivitiesRestController::getActivities');       
     });
 
     $routes->group('profile', function($routes) {      
         $routes->post('create', 'ProfilesRestController::create'); 
         $routes->put('update', 'ProfilesRestController::update'); 
         $routes->put('updatePicture', 'ProfilesRestController::updatePicture'); 
-        $routes->get('findall', 'ProfilesRestController::findAll');
         $routes->get('find/(:any)', 'ProfilesRestController::find/$1');       
     });
 
