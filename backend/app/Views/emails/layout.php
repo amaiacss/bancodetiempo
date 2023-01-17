@@ -10,16 +10,16 @@
 
 <body bgcolor="#eeeeee" style="background-color:#eeeeee;">
 
-    <table bgcolor="#eeeeee" cellpadding="20" cellspacing="20" border="0" role="presentation" style="width:100%;padding:2rem 0rem;">
+    <table bgcolor="#eeeeee" cellpadding="5" cellspacing="5" border="0" role="presentation" style="width:100%;padding:1.5rem 0rem;">
     <tr><td>&nbsp;</td></tr>
 
         <!--main content area-->
         <tr>
-            <td class="tPad-0" align="center" valign="top" style="padding-top: 20px;" >
-                <table width="600" bgcolor="ffffff" style="width:600px; background-color: #ffffff;padding:2rem 1rem;" cellpadding="20" cellspacing="20">
+            <td class="tPad-0" align="center" valign="top" style="padding-top: 10px;" >
+                <table width="600" bgcolor="ffffff" style="width:600px; background-color: #ffffff;padding:1.5rem 1rem;" cellpadding="5" cellspacing="5">
                     <tr>
                         <td align="center" valign="top">
-                            <a href="https://bt-app-eus.web.app"><img src="https://bt-app-eus.web.app/assets/img/navbar-logo-bdt.svg" alt="logo"></a>
+                        <a href="https://bt-app-eus.web.app" style="text-decoration:none;"><h1 style="font-family:Arial, Helvetica, sans-serif;color:#ffc800">Banco del tiempo</h1></a>
                         </td>
                     </tr>
                     <tr>
