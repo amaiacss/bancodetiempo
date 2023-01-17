@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ProfileModel;
+use App\Models\UserModel;
 use Config\Services;
 
 class ProfilesRestController extends BaseController
@@ -27,8 +28,9 @@ class ProfilesRestController extends BaseController
         $profile = $this->request->getJSON();
         $model = new ProfileModel();     
         $data = $model->find($profile->id);
+        $userModel = new UserModel();
         if (isSet($data)) {            
-            if(!$model->update($profile->id, $profile)) {
+            if(!$model->update($profile->id, $profile) || !$userModel->update($profile->id, $profile)) {
                 $this->PrintResult();
                 return $this->response->setStatusCode(400);
             } else {

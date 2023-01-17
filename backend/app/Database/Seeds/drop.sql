@@ -7,3 +7,5 @@ DROP TABLE users;
 DROP TABLE categories;
 DROP TABLE cities;
 DROP TABLE provinces;
+DROP TRIGGER after_requests_update;
+DROP TRIGGER after_requests_insert;

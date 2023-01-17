@@ -28,18 +28,19 @@ class CorsFilter implements FilterInterface {
         $allowed_domains = array(
             'https://bt-app-eus.web.app',
             'http://localhost:4200'
+          
         );
 
-        if(in_array($origin, $allowed_domains)) {
+      //  if(in_array($origin, $allowed_domains)) {
             header('Access-Control-Allow-Origin: ' . $origin);
 
             header("Access-Control-Allow-Headers: Origin, X-API-KEY, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Access-Control-Allow-Headers, Authorization, observe, enctype, Content-Length, X-Csrf-Token");
             header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, PATCH, OPTIONS");
             header("Access-Control-Max-Age: 3600");
             header('content-type: application/json; charset=utf-8');
-        } else {
+      /*  } else {
             die('no permission');
-        }
+        }*/
         
         // Access-Control headers are received during OPTIONS requests
         if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
