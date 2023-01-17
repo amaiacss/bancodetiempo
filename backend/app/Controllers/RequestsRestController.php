@@ -63,27 +63,20 @@ class RequestsRestController extends BaseController
     // Se recuperan las solicitudes que han hecho los usuarios a mis actividades
     // El id que se recibe es el logeado
     public function getRequestsByactivities($id) {
-        $modelActivity = new \App\Models\ActivityModel();
-        $modelActivity->select('id')->where('idUser', $id)->where('deleted_at', NULL);
-        $activities = $modelActivity->findAll();
-        $data = [];
-        if (count($activities) > 0) {
-            $activitiesid = [];
-            foreach($activities as $key => $value) {
-                array_push($activitiesid, $value->id);
-            }
-            $model = new RequestsModel();
-            $model->select('requests.id, requests.updated_at, requeststates.name_es, requeststates.name_eu, activities.title, users.id as userId, users.username, users.email, profiles.phone, requests.hours');
-            $model->join('requeststates', 'requeststates.id = requests.idState');
-            $model->join('activities', 'activities.id = requests.idActivity');
-            $model->join('users', 'users.id = requests.idUser');
-            $model->join('profiles', 'profiles.id = requests.idUser');
-            $model->orderBy('requests.updated_at', 'DESC');
-            $data = $model->whereIn('idActivity', $activitiesid)->find();  
-           
+              
+        $model = new RequestsModel();
+        $model->select('requests.id, requests.updated_at, requeststates.name_es, requeststates.name_eu, activities.title, users.id as userId, users.username, users.email, profiles.phone, requests.hours');
+        $model->join('requeststates', 'requeststates.id = requests.idState');
+        $model->join('activities', 'activities.id = requests.idActivity');
+        $model->join('users', 'users.id = requests.idUser');
+        $model->join('profiles', 'profiles.id = requests.idUser');
+        $model->orderBy('requests.updated_at', 'DESC');
+        $data = $model->where('activities.idUser', $id)->where('activities.deleted_at', NULL)->find();  
+       
+        if(count($data) > 0) {
             $this->SetResult('ok', true);
         }
-
+       
         $this->SetResult('data', $data);
         return $this->PrintResult();
     } 
