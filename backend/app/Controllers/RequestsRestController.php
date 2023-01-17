@@ -11,8 +11,6 @@ class RequestsRestController extends BaseController
     public function create()
     {
         $request = $this->requestdata;  
-        // TODO:Consultar si ésta petición ya existe 
-        // TODO:Permitir registrar si para el mismo idUser, mismo idActivity, el idState == C || F 
         $model = new RequestsModel();
         
         if(!$model->insert($request)) {
