@@ -50,6 +50,7 @@ class RequestsRestController extends BaseController
         $model->join('activities', 'activities.id = requests.idActivity');
         $model->join('users', 'users.id = activities.idUser');
         $model->join('profiles', 'profiles.id = activities.idUser');
+        $model->orderBy('requests.updated_at', 'DESC');
         $data = $model->findAll();
         if(count($data) > 0) {
             $this->SetResult('ok', true);
@@ -77,7 +78,9 @@ class RequestsRestController extends BaseController
             $model->join('activities', 'activities.id = requests.idActivity');
             $model->join('users', 'users.id = requests.idUser');
             $model->join('profiles', 'profiles.id = requests.idUser');
+            $model->orderBy('requests.updated_at', 'DESC');
             $data = $model->whereIn('idActivity', $activitiesid)->find();  
+           
             $this->SetResult('ok', true);
         }
 
