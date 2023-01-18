@@ -21,7 +21,7 @@
     Password: Birt2022*
     Para acceder por FTP: ftp-bancodetiempo.alwaysdata.net (usuario: bancodetiempo pass: Birt2022*)
     Para acceder por SSH: ssh-bancodetiempo.alwaysdata.net  (usuario: bancodetiempo pass: Birt2022*)
-    Para acceder a la BD: mysql-bancodetiempo.alwaysdata.net (nombre: bancodetiempo_db usuario: 292984_birt pass: Bancodetiempo2022)
+    Para acceder a la BD: mysql-bancodetiempo.alwaysdata.net (nombre: bancodetiempo_db usuario: 292984_birt pass: Birt2022*)
 
 
 ## BUZÓN EMAIL 
