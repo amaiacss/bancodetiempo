@@ -41,7 +41,7 @@ class Profiles extends Migration
                 'type'       => 'INT',
                 'constraint' => 10,
                 'null'       => false,
-                'default' => 0
+                'default' => 5
             ),         
             'locationCode' => array(
                 'type'       => 'INT',

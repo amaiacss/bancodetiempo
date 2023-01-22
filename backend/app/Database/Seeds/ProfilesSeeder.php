@@ -19,7 +19,8 @@ class ProfilesSeeder extends Seeder
                 'phone' => $data[3],
                 'aboutMe' => $data[4],                
                 'locationCode' => $data[5],
-                'picture' => $data[6]
+                'picture' => $data[6],
+                'credit' => 5
             ]);
             echo $result;
         }

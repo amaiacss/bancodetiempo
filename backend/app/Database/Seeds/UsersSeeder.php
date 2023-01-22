@@ -29,7 +29,7 @@ class UsersSeeder extends Seeder
     private function listUsers() {
         $str = '1	nvega@birt.eus	nvega
                 2	acasas@birt.eus	acasas
-                3	iaguirreche@birt.eus	iaguirreche
+                3	izarne.b@gmail.com	izarberis
                 4	anruiz@birt.eus	anruiz
                 5	naiarafisio@gmail.com	naiarafisio
                 6	kepabilbao@gmail.com	kbilbao
